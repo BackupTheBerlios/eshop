@@ -3,3 +3,7 @@
 - mod_user : add new customer or new membership. -> at works
 - mod_order : print and validate a purchase. cheque payment is possible at the moment. -> at works
 - add a phone number for customers
+
+[kilgore]
+- begin user help integration
+- use template to display item list & item
