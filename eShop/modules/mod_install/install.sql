@@ -282,7 +282,7 @@ INSERT INTO prefix_countries VALUES ('235','yt','Mayotte');#%%
 INSERT INTO prefix_countries VALUES ('236','yu','Yugoslavia');#%%
 INSERT INTO prefix_countries VALUES ('237','za','South Africa');#%%
 INSERT INTO prefix_countries VALUES ('238','zm','Zambia');#%%
-INSERT INTO prefix_countries VALUES ('239','zr','Zaire');#%%
+INSERT INTO prefix_countries VALUES ('239','cd','Congo, Democratic Republic');#%%
 INSERT INTO prefix_countries VALUES ('240','zw','Zimbabwe');#%%
 
 
