@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* @version 0.1
+* $Id: index.php,v 1.2 2004/07/10 20:29:10 kilgore Exp $
 **/
 
 define( "_DIRECT_ACCESS", 1 );
