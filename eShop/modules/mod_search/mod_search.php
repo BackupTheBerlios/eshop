@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* @version 0.1
+* $Id: mod_search.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
 **/
 
 $nbr_art_per_page = 10;

@@ -5,7 +5,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* @version 0.1
+* $Id: mod_cat.php,v 1.3 2004/07/10 20:32:07 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
