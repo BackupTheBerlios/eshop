@@ -1,18 +1,19 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-17 02:59:58
+<?php /* Smarty version 2.6.2, created on 2004-08-17 15:07:02
          compiled from ./pages/mod_estimate/user_estimate.tpl */ ?>
-<div>
-	<div style="text-align: left;">
-		<span style="text-align: left;">Devis en cours</span>
-		<ul>
-    		<li>item1 | status1 : date | status2 : date | status3 : date<br/></li>
-    		<li>item2 | status | date | status2 : date | status3 : date<br/></li>
-  		</ul>
+<div id="ue-content">
+	<div style="text-align: left;">Devis en cours</div>
+		<div id="container">	
+			<ul>
+		    	<li>item1 | traité | date of estimate<br/></li>
+		  	</ul>
+		  </div>
 	</div>
-	<div style="text-align: left;">
-		<span style="text-align: left;">Devis traité</span>
-		<ul>
-    		<li>item1 | traité | date | status2 : date | status3 : date<br/></li>
-    		<li>item2 | traité | date | status2 : date | status3 : date<br/></li>
-  		</ul>
+	<hr />
+	<div id="ue_title">Devis traité</div>
+		<div id="container">	
+			<ul>
+		    	<li>item1 | traité | date of estimate<br/></li>
+		  	</ul>
+		  </div>
 	</div>
 </div>
