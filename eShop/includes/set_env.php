@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: set_env.php,v 1.6 2004/08/19 02:07:49 setcode Exp $
+* $Id: set_env.php,v 1.7 2004/08/24 01:16:18 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../erreur.html"));
@@ -41,6 +41,7 @@ $template->assign('title', $title);
 $template->assign('keywords', $keywords);
 $template->assign('description', $description);
 $template->assign('currency', $currency);
+$template->assign('taxe', $taxe);
 
 /* creating the database connexion */
 $connexion = &ADONewConnection($db_type);

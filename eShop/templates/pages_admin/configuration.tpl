@@ -89,6 +89,10 @@
     <td class="alignleft"><input type="text" name="company_address" value="{$company_address}" size="40"/></td>
   </tr>
   <tr>
+    <td class="alignleft">Adresse2</td>
+    <td class="alignleft"><input type="text" name="company_address2" value="{$company_address2}" size="40"/></td>
+  </tr>
+  <tr>
     <td class="alignleft">N° de téléphone</td>
     <td class="alignleft"><input type="text" name="company_telephone" value="{$company_telephone}" size="40"/></td>
   </tr>
@@ -101,12 +105,20 @@
     <td class="alignleft"><input type="text" name="company_copyright" value="{$company_copyright}" size="40"/></td>
   </tr>
   <tr>
+    <td class="alignleft">TVA Intra-Communautaire</td>
+    <td class="alignleft"><input type="text" name="company_tva_intra_eu" value="{$company_tva_intra_eu}" size="40"/></td>
+  </tr>
+  <tr>
     <td colspan="2" class="framedline"><strong>Facturation</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Symbole monétaire (€, CHF...)</td>
     <td class="alignleft"><input type="text" name="currency" value="{$currency}" size="40"/></td>
-  </tr>  
+  </tr>
+  <tr>
+    <td class="alignleft">Taxe (TTC, HT...)</td>
+    <td class="alignleft"><input type="text" name="taxe" value="{$taxe}" size="40"/></td>
+  </tr> 
   <tr>
     <td colspan="2">
     	<div align="center">

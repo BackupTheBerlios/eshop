@@ -7,7 +7,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.config.php,v 1.5 2004/08/13 08:26:57 setcode Exp $
+* $Id: class.config.php,v 1.6 2004/08/24 01:16:56 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -47,7 +47,8 @@ class Config
 			'editorial_title'	=>'Titre de l\'éditorial',
 			'editorial_text'	=>'Contenu de l\'éditorial',
 			'benchmark_activation'			=>'Affichage temps d\'exécution du script',
-			'currency'			=>'Symbole monétaire'
+			'currency'			=>'Symbole monétaire',
+			'taxe'				=>'TTC ou HT'
 		);
 		
 		$this->autorizedSpecialChar = array (
@@ -57,21 +58,24 @@ class Config
 			'db_pass'		=>'true',
 			'db_name'		=>'false',
 			'db_prefix'		=>'false',
-			'site_url'		=>'false',
+			'site_url'		=>'true',
 			'title'			=>'false',
 			'keywords'		=>'true',
 			'description'		=>'true',
 			'company_name'		=>'false',
-			'company_address'	=>'false',
+			'company_address'	=>'true',
+			'company_address2'	=>'true',
 			'company_mail'		=>'false',
 			'company_telephone'	=>'true',
 			'company_contact'	=>'false',
 			'company_copyright'	=>'true',
+			'company_tva_intra_eu'	=>'true',
 			'editorial'			=>'true',
 			'editorial_title'	=>'true',
 			'editorial_text'	=>'true',
 			'benchmark_activation'			=>'true',
-			'currency'		=> 'true'
+			'currency'		=> 'false',
+			'taxe'		=> 'true'
 			);
 			
 		$this->canBeEmpty = array (
@@ -87,15 +91,18 @@ class Config
 			'description'		=>'true',
 			'company_name'		=>'true',
 			'company_address'	=>'true',
+			'company_address2'	=>'true',
 			'company_mail'		=>'true',
 			'company_telephone'	=>'true',
 			'company_contact'	=>'true',
 			'company_copyright'	=>'true',
+			'company_tva_intra_eu'	=>'true',
 			'editorial'			=>'true',
 			'editorial_title'	=>'true',
 			'editorial_text'	=>'true',
 			'benchmark_activation'			=>'true',
-			'currency'		=> 'false'
+			'currency'		=> 'false',
+			'taxe'	=>'true'
 			);
 		
 		// 'valeur' => 'nom de la variable sans $ et sans ESPACE'	
@@ -112,15 +119,18 @@ class Config
 			'description'		=>'',
 			'company_name'		=>'',
 			'company_address'	=>'',
+			'company_address2'	=>'',
 			'company_mail'		=>'',
 			'company_telephone'	=>'',
 			'company_contact'	=>'',
 			'company_copyright'	=>'',
+			'company_tva_intra_eu'	=>'',
 			'editorial'			=>'',
 			'editorial_title'	=>'',
 			'editorial_text'	=>'',
 			'benchmark_activation'			=>'',
-			'currency'		=> ''
+			'currency'		=> '',
+			'taxe'	=>'',
 		);
 	}
 
