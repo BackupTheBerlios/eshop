@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-16 18:30:25
+<?php /* Smarty version 2.6.2, created on 2004-08-17 00:43:49
          compiled from ./pages/menu.tpl */ ?>
 <?php if (! $this->_tpl_vars['is_not_logged']): ?>
 <h1>Mon E-Shop</h1>
@@ -6,7 +6,7 @@
 	<li><a href="./index.php?module=mod_cart">Mon panier</a></li>
 	<li><a href="index.php?module=mod_account">Mes informations</a></li>
 	<?php if ($this->_tpl_vars['mod_estimate']): ?>
-	<li><a href="index.php?module=mod_estimate">Mes devis</a></li>
+	<li><a href="index.php?module=mod_estimate&action=user_estimate">Mes devis</a></li>
 	<?php endif; ?>
 </ul>
 <br />

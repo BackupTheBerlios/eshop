@@ -74,7 +74,10 @@
 		  			{include file="./pages/resultsearch.tpl"}
 		  		{/if}
 		  		{if $template == "estimate"}
-		  			{include file="./pages/estimate.tpl"}
+		  			{include file="./pages/mod_estimate/estimate.tpl"}
+		  		{/if}
+		  		{if $template == "user_estimate"}
+		  			{include file="./pages/mod_estimate/user_estimate.tpl"}
 		  		{/if}
 		  	</div>
 		  	{if $template == "main" && $numberOfItems > 0}

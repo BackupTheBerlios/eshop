@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-16 16:10:34
+<?php /* Smarty version 2.6.2, created on 2004-08-17 02:37:24
          compiled from ./pages/itemsfrontpage.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', './pages/itemsfrontpage.tpl', 4, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', './pages/itemsfrontpage.tpl', 4, false),array('modifier', 'number_format', './pages/itemsfrontpage.tpl', 5, false),)), $this); ?>
 <div id="frontpageitems">
 	<?php if (isset($this->_sections['number'])) unset($this->_sections['number']);
 $this->_sections['number']['name'] = 'number';
@@ -32,7 +32,7 @@ $this->_sections['number']['last']       = ($this->_sections['number']['iteratio
 &art_id=<?php echo $this->_tpl_vars['values'][$this->_sections['number']['index']][3]; ?>
 "><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['number']['index']][0])) ? $this->_run_mod_handler('truncate', true, $_tmp, 20, "...", true) : smarty_modifier_truncate($_tmp, 20, "...", true)); ?>
 </a></h1>
-			<h2><?php echo $this->_tpl_vars['values'][$this->_sections['number']['index']][2]; ?>
+			<h2><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['number']['index']][2])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </h2>
 			<?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['number']['index']][1])) ? $this->_run_mod_handler('truncate', true, $_tmp, 55, "...", true) : smarty_modifier_truncate($_tmp, 55, "...", true)); ?>

@@ -182,7 +182,7 @@ if(isset($_REQUEST["cat"]))
 					$liste .= $recordSet_artOfCat->fields["it_quantity"];
 					$liste .= '</td>';
 					$liste .= '<td>';
-					$liste .= $recordSet_artOfCat->fields["it_price"]." ".$GLOBALS["currency"]." TTC";
+					$liste .= number_format($recordSet_artOfCat->fields["it_price"], 2, ",", " ")." ".$GLOBALS["currency"]." TTC";
 					$liste .= '</td>';
 					$liste .= '</tr>';
 					$recordSet_artOfCat->MoveNext();
@@ -228,7 +228,7 @@ if(isset($_REQUEST["cat"]))
 					$liste .= 'Prix';
 					$liste .= '</td>';
 					$liste .= '<td>';
-					$liste .= $recordSet_OneArt->fields["it_price"]." ".$GLOBALS["currency"];
+					$liste .= number_format($recordSet_OneArt->fields["it_price"], 2, ",", " ")." ".$GLOBALS["currency"];
 					$liste .= '</td>';
 					$liste .= '</tr>';
 					$liste .= '<tr>';

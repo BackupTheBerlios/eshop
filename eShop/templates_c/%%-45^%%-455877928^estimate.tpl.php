@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-16 16:11:10
+<?php /* Smarty version 2.6.2, created on 2004-08-17 02:41:27
          compiled from ./pages/estimate.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'string_format', './pages/estimate.tpl', 48, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', './pages/estimate.tpl', 48, false),array('modifier', 'string_format', './pages/estimate.tpl', 57, false),)), $this); ?>
 <table id="estimate" style="width: 600px;border-style: none;border-size: 0px auto;">
 <tr>
 	<td style="text-align: left;white-space: nowrap;">
@@ -91,12 +91,12 @@ $this->_sections['items']['last']       = ($this->_sections['items']['iteration'
 </td>
     <td><?php echo $this->_tpl_vars['values'][$this->_sections['items']['index']][1]; ?>
 </td>
-    <td style="text-align: right;"><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['items']['index']][2])) ? $this->_run_mod_handler('string_format', true, $_tmp, "%.2f") : smarty_modifier_string_format($_tmp, "%.2f")); ?>
+    <td style="text-align: right;"><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['items']['index']][2])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </td>
     <td style="text-align: center;"><?php echo $this->_tpl_vars['values'][$this->_sections['items']['index']][3]; ?>
 </td>
-    <td style="text-align: right;"><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['items']['index']][4])) ? $this->_run_mod_handler('string_format', true, $_tmp, "%.2f") : smarty_modifier_string_format($_tmp, "%.2f")); ?>
+    <td style="text-align: right;"><?php echo ((is_array($_tmp=$this->_tpl_vars['values'][$this->_sections['items']['index']][4])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </td>
 </tr>
@@ -112,7 +112,7 @@ $this->_sections['items']['last']       = ($this->_sections['items']['iteration'
 <tr>
 	<td colspan="3" style="text-align: center;background-color: transparent;border-style: solid;border-color: #000000;border-width: 0px 0px 0px 0px;">&nbsp;</td>
 	<td style="text-align: left;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 0px 1px 1px;"><strong>Total (TTC)</strong></td>
-	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['totalTtc'])) ? $this->_run_mod_handler('string_format', true, $_tmp, "%.2f") : smarty_modifier_string_format($_tmp, "%.2f")); ?>
+	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['totalTtc'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </td>
 </tr>
@@ -124,7 +124,7 @@ $this->_sections['items']['last']       = ($this->_sections['items']['iteration'
 	<td>
 		<form action="index.php?module=mod_estimate" method="post">
 			<input type="text" name="action" value="confirm" size="40" maxlength="40" style="display: none;"/>
-			<input type="text" name="ttc" value="<?php echo ((is_array($_tmp=$this->_tpl_vars['totalTtc'])) ? $this->_run_mod_handler('string_format', true, $_tmp, "%.2f") : smarty_modifier_string_format($_tmp, "%.2f")); ?>
+			<input type="text" name="ttc" value="<?php echo ((is_array($_tmp=$this->_tpl_vars['totalTtc'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
 " size="40" maxlength="40" style="display: none;"/>
 			<input type="submit" value="Valider" class="submit" />
 		</form>
