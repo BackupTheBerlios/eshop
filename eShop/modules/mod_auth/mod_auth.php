@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_auth.php,v 1.3 2004/07/29 13:15:54 kilgore Exp $
+* $Id: mod_auth.php,v 1.4 2004/08/12 00:22:31 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -70,9 +70,15 @@ switch($_REQUEST["action"])
 			
 			if (!$resultat) 
 				print $connexion->ErrorMsg();
-
-			// redirecting visitor
-			header("Location:".$_SERVER["HTTP_REFERER"]);
+			if($_REQUEST["module"] == "mod_auth") //don't return on login page
+			{
+				header("Location: index.php");
+			}
+			else
+			{
+				// redirecting visitor
+				header("Location:".$_SERVER["HTTP_REFERER"]);
+			}
 		} 
 	}
 	
