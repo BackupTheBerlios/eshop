@@ -79,6 +79,9 @@
 		  		{if $template == "user_estimate"}
 		  			{include file="./pages/mod_estimate/user_estimate.tpl"}
 		  		{/if}
+		  		{if $template == "est_view"}
+		  			{include file="./pages/mod_estimate/est_view.tpl"}
+		  		{/if}
 		  	</div>
 		  	{if $template == "main" && $numberOfItems > 0}
 	  			{include file="./pages/itemsfrontpage.tpl"}

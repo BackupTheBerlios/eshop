@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-18 02:50:39
+<?php /* Smarty version 2.6.2, created on 2004-08-20 07:37:36
          compiled from ./pages/itemsfrontpage.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', './pages/itemsfrontpage.tpl', 4, false),array('modifier', 'number_format', './pages/itemsfrontpage.tpl', 5, false),)), $this); ?>

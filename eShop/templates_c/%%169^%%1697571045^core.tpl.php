@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-17 03:01:22
+<?php /* Smarty version 2.6.2, created on 2004-08-20 16:25:38
          compiled from ./templates/core.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
@@ -136,6 +136,13 @@ unset($_smarty_tpl_vars);
 		  		<?php if ($this->_tpl_vars['template'] == 'user_estimate'): ?>
 		  			<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "./pages/mod_estimate/user_estimate.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		  		<?php endif; ?>
+		  		<?php if ($this->_tpl_vars['template'] == 'est_view'): ?>
+		  			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./pages/mod_estimate/est_view.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>

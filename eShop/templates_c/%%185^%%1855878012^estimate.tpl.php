@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-18 19:39:29
+<?php /* Smarty version 2.6.2, created on 2004-08-20 16:10:15
          compiled from ./pages/mod_estimate/estimate.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', './pages/mod_estimate/estimate.tpl', 48, false),)), $this); ?>
@@ -34,19 +34,19 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 </strong>.</span>
 	</td>
 	<td style="text-align: left;white-space: nowrap;">
-		<strong><?php echo $this->_tpl_vars['user_info'][0][1]; ?>
-</strong><br />
-		<?php echo $this->_tpl_vars['user_info'][0][2]; ?>
- <?php echo $this->_tpl_vars['user_info'][0][3]; ?>
+		<?php if ($this->_tpl_vars['us_company'] != ""): ?><strong><?php echo $this->_tpl_vars['us_company']; ?>
+</strong><br /><?php endif; ?>
+		<?php echo $this->_tpl_vars['us_first_name']; ?>
+ <?php echo $this->_tpl_vars['us_name']; ?>
 <br />
-		<?php echo $this->_tpl_vars['user_info'][0][4]; ?>
+		<?php echo $this->_tpl_vars['us_address']; ?>
 <br />
-		<?php echo $this->_tpl_vars['user_info'][0][5]; ?>
- <?php echo $this->_tpl_vars['user_info'][0][6]; ?>
+		<?php echo $this->_tpl_vars['us_NPA']; ?>
+ <?php echo $this->_tpl_vars['us_city']; ?>
 <br />
-		<?php echo $this->_tpl_vars['user_info'][0][7]; ?>
+		<?php echo $this->_tpl_vars['us_country']; ?>
 <br />
-		<?php echo $this->_tpl_vars['user_info'][0][8]; ?>
+		<?php echo $this->_tpl_vars['us_email']; ?>
 <br />
 	</td>
 </tr>

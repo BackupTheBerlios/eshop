@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-18 19:39:04
+<?php /* Smarty version 2.6.2, created on 2004-08-20 17:12:32
          compiled from ./pages/mod_estimate/user_estimate.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', './pages/mod_estimate/user_estimate.tpl', 14, false),array('modifier', 'number_format', './pages/mod_estimate/user_estimate.tpl', 15, false),)), $this); ?>
@@ -37,7 +37,8 @@ $this->_sections['estimate']['first']      = ($this->_sections['estimate']['iter
 $this->_sections['estimate']['last']       = ($this->_sections['estimate']['iteration'] == $this->_sections['estimate']['total']);
 ?>
 		<tr>	
-	   		<td class="center"><a id="est_link" href="#"><?php echo $this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_num']; ?>
+	   		<td class="center"><a id="est_link" href="index.php?module=mod_estimate&action=est_view&est_num=<?php echo $this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_num']; ?>
+"><?php echo $this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_num']; ?>
 </a></td>
 	   		<td class="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d-%m-%Y") : smarty_modifier_date_format($_tmp, "%d-%m-%Y")); ?>
 </td>
@@ -81,7 +82,8 @@ $this->_sections['traite']['first']      = ($this->_sections['traite']['iteratio
 $this->_sections['traite']['last']       = ($this->_sections['traite']['iteration'] == $this->_sections['traite']['total']);
 ?>
     	<tr>	
-	   		<td class="center"><a id="est_link" href="#"><?php echo $this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_num']; ?>
+	   		<td class="center"><a id="est_link" href="index.php?module=mod_estimate&action=est_view&est_num=<?php echo $this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_num']; ?>
+"><?php echo $this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_num']; ?>
 </a></td>
     		<td class="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d-%m-%Y") : smarty_modifier_date_format($_tmp, "%d-%m-%Y")); ?>
 </td>
