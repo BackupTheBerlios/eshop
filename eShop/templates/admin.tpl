@@ -8,10 +8,11 @@
 		<meta http-equiv="content-style-type" content="text/css" />
 		<meta content="{$description}" name="description" />
 		<meta content="{$keywords}" name="keywords" />
-		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />   
+		<meta content="Thierry Prêtre / Raphaël Emourgeon / Christian KAKESA" name="author" />   
 		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/{$css}.css" />     
-		<link rel="stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />     
-		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
+		<link rel="alternate stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />     
+		<link rel="alternate stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
+		<link rel="alternate stylesheet" type="text/css" href="./style/silver.css" media="screen" title="silver" />
   </head>
 	<body id="e-shop">
 	<div align="center">
