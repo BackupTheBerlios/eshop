@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre, R. Emourgeon & Christian KAKESA
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_estimate.php,v 1.3 2004/08/14 05:14:15 setcode Exp $
+* $Id: mod_estimate.php,v 1.4 2004/08/16 20:27:08 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -94,7 +94,7 @@ else
 			//insertion des infos du devis
 			if($_POST["action"]=="confirm")
 			{
-				$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .")";
+				$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .", '')";
 				if(!$resultat = &$connexion->Execute($query))
 					echo $connexion->ErrorMsg();
 				$est_id = mysql_insert_id();

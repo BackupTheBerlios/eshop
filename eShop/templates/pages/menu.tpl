@@ -1,8 +1,11 @@
-{if NOT $is_not_logged}
+{if !$is_not_logged}
 <h1>Mon E-Shop</h1>
 <ul>
-	<li><a href="index.php?module=mod_account">Mes informations</a></li>			
-	<li><a href="./index.php?module=mod_cart">Mon panier</a></li>  				  						
+	<li><a href="./index.php?module=mod_cart">Mon panier</a></li>
+	<li><a href="index.php?module=mod_account">Mes informations</a></li>
+	{if $mod_estimate}
+	<li><a href="index.php?module=mod_estimate">Mes devis</a></li>
+	{/if}
 </ul>
 <br />
 {/if}

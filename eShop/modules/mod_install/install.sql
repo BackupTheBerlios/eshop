@@ -376,6 +376,7 @@ CREATE TABLE `prefix_estimate` (
   `est_user_id_FK` int(9) NOT NULL default '0',
   `est_date` date NOT NULL default '0000-00-00',
   `est_ttc_price` float(10,2) NOT NULL default '0.00',
+  `est_status` int(1) NOT NULL default '0',
   PRIMARY KEY  (`est_id`),
   KEY `est_id` (`est_id`,`est_num`),
   KEY `est_user_id_FK` (`est_user_id_FK`)
@@ -390,4 +391,27 @@ CREATE TABLE `prefix_estimate_items` (
   `it_qte` int(9) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `est_id_FK` (`est_id_FK`,`it_id_FK`)
+) TYPE=MyISAM;
+
+# Structure of table `prefix_status`
+DROP TABLE IF EXISTS `prefix_status`;
+CREATE TABLE `prefix_status` (
+  `st_id` int(1) unsigned NOT NULL default '0',
+  `st_name` varchar(255) default NULL,
+  PRIMARY KEY  (`st_id`),
+  KEY `st_name` (`st_name`),
+  KEY `st_id` (`st_id`)
+) TYPE=MyISAM;
+INSERT INTO `prefix_status` VALUES (0, 'not read');
+INSERT INTO `prefix_status` VALUES (1, 'read');
+INSERT INTO `prefix_status` VALUES (2, 'at work');
+INSERT INTO `prefix_status` VALUES (3, 'ok');
+
+DROP TABLE IF EXISTS `prefix_active_mod`;
+CREATE TABLE `prefix_active_mod` (
+  `am_id` int(11) NOT NULL auto_increment,
+  `am_name` varchar(255) NOT NULL default '',
+  `am_status` int(1) NOT NULL default '0',
+  PRIMARY KEY  (`am_id`),
+  KEY `am_name` (`am_name`)
 ) TYPE=MyISAM;
