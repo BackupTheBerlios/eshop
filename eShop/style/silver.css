@@ -2,8 +2,9 @@
  *  grey-styles.css - Website cascading styles sheet.
  *
  *	project		: E-shop
- *	created		: 11,08,2004
+ *	created	: 11,08,2004
  *	author		: Christian KAKESA
+ * version		: Testing...
  * ----------------------------------------------------
  */
  
@@ -14,8 +15,8 @@
 body {
 	font-family: Verdana, Courier, helvetica, sans-serif;
 	font-size: 10px;
-	color: #000;
-	background-color: #fff;
+	color: #000000;
+	background-color: #FAFAFA;
 	padding: 0;
 	text-align: left;
 	height:100%;
@@ -23,7 +24,7 @@ body {
 
 a {
 	text-decoration: underline;
-	color: #000;
+	color: #000000;
 }
 
 li {
@@ -42,11 +43,11 @@ li {
 	width: 780px;
 	overflow: auto;
 	padding: 3px;
-	border-right: 2px solid #000;
-	border-left: 2px solid #000;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-	color : #000;
+	border-right: 2px solid #6B6B6B;
+	border-left: 2px solid #6B6B6B;
+	border-top: 1px solid #6B6B6B;
+	border-bottom: 1px solid #6B6B6B;
+	color : #000000;
 }
 
 /* hack to force vertical scrollbar */
@@ -60,9 +61,9 @@ li {
 }
 
 #title {
-	border-right: 2px solid #000;
-	border-left: 2px solid #000;
-	border-bottom: 2px solid #000;
+	border-right: 2px solid #6B6B6B;
+	border-left: 2px solid #6B6B6B;
+	border-bottom: 2px solid #6B6B6B;
 	width: 780px;
 	padding: 3px;
 	height:100px;
@@ -70,26 +71,26 @@ li {
 }
 
 #head_menu {
-	border-right: 2px solid #000;
-	border-left: 2px solid #000;
-	border-top: 2px solid #000;
+	border-right: 2px solid #6B6B6B;
+	border-left: 2px solid #6B6B6B;
+	border-top: 2px solid #6B6B6B;
 	text-align: left;
 	padding: 3px;
 	width: 780px;
 	color: #88e;
-	background-color: #000;	
+	background-color: #6B6B6B;	
 }
 
 #log_menu {
 	font-weight: bold;
-	border-right: 2px solid #000;
-	border-left: 2px solid #000;
-	border-top: 2px solid #000;
+	border-right: 2px solid #6B6B6B;
+	border-left: 2px solid #6B6B6B;
+	border-top: 2px solid #6B6B6B;
 	text-align: left;
 	padding: 3px;
 	width: 780px;
 	color: #88e;
-	background-color: #000;	
+	background-color: #FAFAFA;	
 }
 
 #footer {
@@ -118,8 +119,8 @@ li {
 	padding: 3px;
 	width: 780px;
 	margin: 0 auto;
-	color: #ccc;
-	background-color: #000;
+	color: #CCCCCC;
+	background-color: #FAFAFA;
 }
 
 #validator {
@@ -127,8 +128,8 @@ li {
 	width: 780px;
 	padding:3px;
 	text-align: left;
-	border-right: 2px solid #000;
-	border-left: 2px solid #000;
+	border-right: 2px solid #6B6B6B;
+	border-left: 2px solid #6B6B6B;
 }
 
 #log-user {
@@ -167,7 +168,7 @@ li {
  * ---------------------------------------------------*/
 
 #footer a {
-	color:#44e;
+	color:#6B6B6B;
 	text-decoration:none;
 }
 
@@ -194,9 +195,9 @@ li {
 
 #menu h1 {
 	color: #fff;
-	background-color: #55b;
+	background-color: #A6A6A6;
 	font-size: 12px;
-	border-bottom: 1px #000 solid;
+	border-bottom: 1px #6B6B6B solid;
 	padding:2px;
 	margin-top:0px;
 }
@@ -236,13 +237,13 @@ li {
  * FORMS
  * ---------------------------------------------------*/
 input, textarea, option, select {
-	background : #aaf;
-	color : #000;
+	background : #DFE2E6;
+	color : #000000;
 	font-family : Verdana,Arial,Helvetica,sans-serif;
 	font-size : 1em;
 }
 input, textarea {
-	border : 1px inset #000;
+	border : 1px inset #6B6B6B;
 }
 
 label, span.label {
@@ -252,7 +253,7 @@ label, span.label {
 
 input.submit {
 	border-style : outset;
-	background : #aaf;
+	background : #DFE2E6;
 	font-weight : bold;
 }
 
@@ -265,7 +266,7 @@ div.login {
 	text-align : left;
 	padding : 1em 1em;
 	background : #fff;
-	color : #000;
+	color : #000000;
 	border : 1px solid #237; 
 }
 
@@ -300,7 +301,7 @@ div.inst_header
 	padding : 3px;
 	background : #256;
 	color : #fff;
-	border: solid #000 1px;
+	border: solid #6B6B6B 1px;
 }
 div.inst_container
 {
@@ -314,7 +315,7 @@ div.inst_container
 	padding : 3px;
 	background : #256;
 	color : #fff;
-	border: solid #000 1px;
+	border: solid #6B6B6B 1px;
 }
 div.inst_container td
 {
@@ -331,7 +332,7 @@ div.inst_footer
 	padding : 3px;
 	background : #256;
 	color : #fff;
-	border: solid #000 1px;
+	border: solid #6B6B6B 1px;
 }
 label.defile 
 {
@@ -386,7 +387,7 @@ select#install {
 }
 
 #install input, textarea {
-	border : 1px inset #000;
+	border : 1px inset #6B6B6B;
 }
 /* ----------------------------------------------------
  * ARRAY DISPLAY
@@ -436,7 +437,7 @@ div.liste
 {
 	text-align:left;
 	font-weight:bold;
-	background-color : #bbe;
+	background-color : #DDDDDD;
 	padding:2px;
 	border : dashed 1px;
 	vertical-align:text-top;
@@ -482,8 +483,8 @@ div.pages a:active
 {
 	font-size: 14px;
 	padding:0px;
-	border-bottom: solid 1px #000;
-	background-color: #bbe;
+	border-bottom: solid 1px #6B6B6B;
+	background-color: #DDDDDD;
 	text-align:left;
 }
 #center h2.edito
@@ -508,7 +509,7 @@ div.frontpage
 	border-style : solid;
 	border-color : #999;
 	
-	background-color: #bbe;
+	background-color: #DDDDDD;
 
 	position:relative;
 	display : block;
