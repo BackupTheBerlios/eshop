@@ -69,6 +69,7 @@ li {
 	background-color: #999999;
 	background-image: url("../images/silver/shop.jpg");
 	background-repeat: no-repeat;
+	overflow: hidden;
 }
 
 #head_menu {
@@ -555,6 +556,12 @@ div.frontpage h2
 
 #orderbutton{
 	background-image: url("../images/silver/order.png");
+	width: 110px;
+	height: 24px;
+}
+
+#estimatebutton{
+	background-image: url("../images/silver/estimate.png");
 	width: 110px;
 	height: 24px;
 }

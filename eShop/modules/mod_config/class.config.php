@@ -7,7 +7,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.config.php,v 1.4 2004/08/11 12:53:45 setcode Exp $
+* $Id: class.config.php,v 1.5 2004/08/13 08:26:57 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -34,10 +34,15 @@ class Config
 			'description'		=>'Description',
 			'company_name'		=>'Nom',
 			'company_address'	=>'Adresse',
+			'company_address2'	=>'Adresse2',
+			'company_npa'	=>'Code Postal',
+			'company_city'	=>'Ville',
 			'company_mail'		=>'Adresse e-mail',
 			'company_telephone'	=>'N° de téléphone',
+			'company_FAX'	=>'N° de FAX',
 			'company_contact'	=>'Nom du reponsable',
 			'company_copyright'	=>'Informations de copyright',
+			'company_tva_intra_eu'	=>'TVA Intre Communautaire',
 			'editorial'			=>'Editorial',
 			'editorial_title'	=>'Titre de l\'éditorial',
 			'editorial_text'	=>'Contenu de l\'éditorial',

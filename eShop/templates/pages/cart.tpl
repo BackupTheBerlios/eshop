@@ -17,4 +17,17 @@
 	</tr>
   {/section}
 </table>
-<a href="./index.php?module=mod_order&action=confirm"><div id="orderbutton"></div></a>
+<table width="600" border="0">
+	<tr>
+		<td>
+			<a href="./index.php?module=mod_estimate">
+				<div id="estimatebutton"></div>
+			</a>
+		</td>
+		<td>
+			<a href="./index.php?module=mod_order&action=confirm">
+				<div id="orderbutton"></div>
+			</a>
+		</td>
+	<tr>
+</table>

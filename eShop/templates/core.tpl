@@ -43,7 +43,7 @@
 		  	</div>
 		  	<div id="center">
 		  		{* no switch in smarty so need to do loads of switch for the different main part *}
-		  		{if $template eq "error"}
+		  		{if $template == "error"}
 		  			{include file="./pages/error.tpl"}
 		  		{/if}
 		  		{if $template == "message"}
@@ -72,6 +72,9 @@
 		  		{/if}
 		  		{if $template == "resultsearch"}
 		  			{include file="./pages/resultsearch.tpl"}
+		  		{/if}
+		  		{if $template == "estimate"}
+		  			{include file="./pages/estimate.tpl"}
 		  		{/if}
 		  	</div>
 		  	{if $template == "main" && $numberOfItems > 0}

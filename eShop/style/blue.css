@@ -556,3 +556,9 @@ div.frontpage h2
 	width: 110px;
 	height: 24px;
 }
+
+#estimatebutton{
+	background-image: url("../images/blue/estimate.png");
+	width: 110px;
+	height: 24px;
+}

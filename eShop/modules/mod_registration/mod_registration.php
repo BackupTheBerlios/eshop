@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_registration.php,v 1.2 2004/07/10 20:32:07 kilgore Exp $
+* $Id: mod_registration.php,v 1.3 2004/08/13 08:26:59 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -115,7 +115,7 @@ if($_REQUEST["action"]=="register2")
 	{
 		// prepare the mail
 		$mail = "Bonjour, \r\n";
-		$mail .= "Pour continuer votre inscription sur le site ".$title." merci ce cliquer sur ce lien : \r\n";
+		$mail .= "Pour continuer votre inscription sur le site ".$title." merci de cliquer sur ce lien : \r\n";
 		$mail .= $site_url."index.php?module=mod_registration&amp;action=mailconfirmation&amp;code=".$session->id;
 		$mail .= "\r\nCordialement,\r\n";
 		$mail .= $company_name."\r\n\r\n";
