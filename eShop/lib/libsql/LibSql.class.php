@@ -23,6 +23,8 @@
  * @package libsql
  * @version 0.0.1b
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ *
+ * $Id: LibSql.class.php,v 1.2 2004/08/20 05:20:16 setcode Exp $
  */
 
 /**
@@ -71,12 +73,12 @@ class LibSql
 	 * $number4 = "1,258,952.66";
 	 * $number5 = "52,66";
 	 * $number6 = "52.66";
-	 * echo LibSql::Number($number1); 	//output : 1258952.66
-	 * echo LibSql::Number($number2);	//output : 1258952.66
-	 * echo LibSql::Number($number3);	//output : 1258952.66
-	 * echo LibSql::Number($number4);	//output : 1258952.66
-	 * echo LibSql::Number($number5);	//output : 52.66
-	 * echo LibSql::Number($number6);	//output : 52.66
+	 * echo LibSql::Number($number1); 	//output : 1258952.66	| 1 258 952,66
+	 * echo LibSql::Number($number2);	//output : 1258952.66	| 1 258 952.66
+	 * echo LibSql::Number($number3);	//output : 1258952.66	| 1.258.952,66
+	 * echo LibSql::Number($number4);	//output : 1258952.66	| 1,258,952.66
+	 * echo LibSql::Number($number5);	//output : 52.66	| 52,66
+	 * echo LibSql::Number($number6);	//output : 52.66	| 52.66
 	 * </code>
 	 *
 	 * @access public
