@@ -117,7 +117,7 @@
 		  	</div>
 		</div> 
 		<div id="footer">
-			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Copyright Raphaël Emourgeon & Prêtre Thierry{if $benchmark_activation eq "on"}- Exec. time : {$benchmark}{/if}</span>
+			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Auteurs : Raphaël Emourgeon & Prêtre Thierry{if $benchmark_activation eq "on"}- Exec. time : {$benchmark}{/if}</span>
 		</div>
 	</div>
 	</body>
