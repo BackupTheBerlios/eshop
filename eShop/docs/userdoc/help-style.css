@@ -1,0 +1,67 @@
+/* ---------------------------------------------------- 
+ *  help-style.css - Website cascading styles sheet.
+ *
+ *	project		: E-shop/Help
+ *	created		: 07.07.2004
+ *	author		: Emourgeon Raphaël
+ * ----------------------------------------------------
+ */
+
+body {
+	font-family: Verdana, Courier, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000;
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+a {
+	font-decoration: underline;
+	font-family: Verdana, Courier, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000;
+}
+
+#contenu{
+	margin-left: 6px;
+	margin-top: 5px;
+	text-align: justify;
+}
+
+#header{
+	height: 2em;
+	width: 100%;
+	background : #FCC8C8;
+	margin-top: 6px;
+	
+	text-align:left;
+	padding-left: 20px;
+	padding-top: 4px;
+	
+	border-top: solid 1px;
+	border-bottom: solid 1px;
+}
+
+#header span.texte{
+	position:relative; 
+	font-family: verdana, helvetica, sans-serif;
+	font-size:12px;
+}
+
+#capture{
+	height: auto;
+	width: 150px;
+	
+	margin-left: 30px;
+	margin-top: 6px;
+	
+	text-align: center;
+	vertical-align: middle;
+	
+	border: dashed 1px;
+}
+
+
+

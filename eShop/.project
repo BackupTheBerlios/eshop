@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>eShop</name>
+	<comment>Project of eShop 100% customisable written in PHP/MySQL/XHTML.</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.emf.codegen.JETBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>net.sourceforge.phpeclipse.parserbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.emf.codegen.jet.IJETNature</nature>
+		<nature>net.sourceforge.phpeclipse.phpnature</nature>
+	</natures>
+</projectDescription>

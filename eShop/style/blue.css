@@ -1,0 +1,525 @@
+/* ---------------------------------------------------- 
+ *  main-styles.css - Website cascading styles sheet.
+ *
+ *	project		: E-shop
+ *	created		: 8.12.2003
+ *	author		: Thierry Prêtre
+ * ----------------------------------------------------
+ */
+ 
+/* ----------------------------------------------------
+ * globals selectors
+ * ---------------------------------------------------*/
+
+body {
+	font-family: Verdana, Courier, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000;
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	height:100%;
+}
+
+a {
+	text-decoration: underline;
+	color: #000;
+}
+
+li {
+	text-align: left;
+}
+
+.alignleft {
+	text-align: left;
+}
+ 
+/* ----------------------------------------------------
+ * divs defintions
+ * ---------------------------------------------------*/
+ 
+#container {
+	width: 780px;
+	overflow: auto;
+	padding: 3px;
+	border-right: 2px solid #000;
+	border-left: 2px solid #000;
+	color : #000;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	height:inherit;
+	overflow:hidden;
+	height:auto;
+	clear:both;
+}
+
+#title {
+
+	border-right: 2px solid #000;
+	border-left: 2px solid #000;
+	border-bottom: 2px solid #000;
+	width: 780px;
+	padding: 3px;
+	height:100px;
+	background-image: url("../images/shop-blue.jpg");
+}
+
+#head_menu {
+	border-right: 2px solid #000;
+	border-left: 2px solid #000;
+	border-top: 2px solid #000;
+	text-align: left;
+	padding: 3px;
+	width: 780px;
+	color: #88e;
+	background-color: #000;	
+}
+#log_menu {
+	font-weight: bold;
+	border-right: 2px solid #000;
+	border-left: 2px solid #000;
+	border-top: 2px solid #000;
+	text-align: left;
+	padding: 3px;
+	width: 780px;
+	color: #88e;
+	background-color: #000;	
+}
+
+#footer {
+	clear:both;
+	width: 790px;
+	text-align: right;
+}
+
+
+#cont_menu a {
+	text-align: left;
+	padding: 3px;
+	width: 780px;
+	margin: 0 auto;
+	color: #ccc;
+	background-color: #000;
+}
+
+#menu {
+	float:left;
+	margin: 0px auto;
+	width: 17em;
+	background-color:white;
+	border: solid #237 1px;
+
+}
+
+#center {
+	margin-left:17.5em;
+	border: solid #237 1px;
+	height:auto;
+}
+
+#validator {
+	margin: 0px auto;
+	width: 780px;
+	padding:3px;
+	text-align: left;
+	border-right: 2px solid #000;
+	border-left: 2px solid #000;
+}
+
+#log-user {
+	padding: 0px;
+	text-align: right;
+	border : solid 0px;
+}
+
+#log-info {
+	float: left;
+	margin: 0px auto;
+	width: 330px;
+	padding: 0px;
+	text-align: left;
+	border : solid 0px;
+}
+
+#ligne-noire {
+	background-color: black;
+	height:1px;
+	margin: 00px auto;
+	width: 780px;
+	height: 2px;	
+}
+
+#editorial {
+	padding:4px;
+	min-height:10px;
+}
+
+#homepage {
+	padding:4px;
+}
+
+/* ----------------------------------------------------
+ * classes/elements defintions
+ * ---------------------------------------------------*/
+
+#footer a {
+	color:#44e;
+	text-decoration:none;
+}
+
+ 
+#head_menu a {
+	color: #fff;	
+}
+
+#title a {	
+	color: #237;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 5px auto;	
+}
+
+#container font{
+	color : #fff;
+}
+
+#log_menu a {
+	font-weight: normal;
+	color: #fff;
+}
+
+#menu h1 {
+	color: #fff;
+	background-color: #55b;
+	font-size: 12px;
+	border-bottom: 1px #000 solid;
+	padding:2px;
+	margin-top:0px;
+}
+
+#menu li{
+	padding:0px;
+}
+
+
+#menu a:link{
+	color: #336;
+	text-decoration:none;
+}
+
+#menu a:hover{
+	padding:0px;
+	color: #336;
+	text-decoration:none;
+	border-bottom:solid 1px #22a;
+}
+#menu a:activ{
+	font-weight: bold;
+}
+
+#menu a:visited{
+	text-decoration:none;
+}
+
+#menu ul {
+	font-size: 10px;	
+}
+#login-user a {
+	color: #fff;	
+}
+
+/*=========================================================
+FORMULAIRES
+=========================================================*/
+input, textarea, option, select {
+	background : #aaf;
+	color : #000;
+	font-family : Verdana,Arial,Helvetica,sans-serif;
+	font-size : 1em;
+}
+input, textarea {
+	border : 1px inset #000;
+}
+
+label, span.label {
+	display : block;
+	font-weight : bold;
+}
+
+input.submit {
+	border-style : outset;
+	background : #aaf;
+	font-weight : bold;
+}
+
+input.submit:active {
+	border-style : inset;
+}
+
+div.login {
+	width : 19em;
+	text-align : left;
+	padding : 1em 1em;
+	background : #fff;
+	color : #000;
+	border : 1px solid #237; 
+}
+
+/*=========================================================
+TABLEAU STATS PAGE ACCUEIL ADMIN
+=========================================================*/
+
+#stats th {
+	border: solid #237 1px;
+	padding: 3px;
+	background-color: #99d;
+}
+
+#top5 th {
+	border: solid #237 1px;
+	padding: 1px;
+	background-color: #99d;
+}
+
+/* ----------------------------------------------------
+ * Install style 
+ * ---------------------------------------------------*/
+
+div.inst_header
+{
+	font-size:12px;
+	font-weight: bold;
+	width : 60em;
+	margin : auto;
+	margin-top: 5px;
+	text-align : left;
+	padding : 3px;
+	background : #256;
+	color : #fff;
+	border: solid #000 1px;
+}
+div.inst_container
+{
+	font-size:12px;
+	font-weight: none;
+	width : 60em;
+	height : 30em;
+	margin : auto;
+	margin-top: 3px;
+	text-align : left;
+	padding : 3px;
+	background : #256;
+	color : #fff;
+	border: solid #000 1px;
+}
+div.inst_container td
+{
+	vertical-align: top;
+}
+div.inst_footer
+{
+	font-size:12px;
+	font-weight: bold;
+	width : 60em;
+	margin : auto;
+	margin-top: 3px;
+	text-align : right;
+	padding : 3px;
+	background : #256;
+	color : #fff;
+	border: solid #000 1px;
+}
+label.defile 
+{
+	text-align : center;
+	vertical-align : bottom;
+}
+label.error 
+{
+	color : #f44;
+	vertical-align : bottom;
+}
+label.defile a
+{
+	text-align : right;
+	vertical-align : bottom;
+	color : #fff;
+	text-decoration:none;
+}
+label.defile a:hover
+{
+	text-align : right;
+	vertical-align : bottom;
+	color : #99f;
+}
+
+#install input{
+	background : #478;
+	color : #fff;
+	font-family : Verdana,Arial,Helvetica,sans-serif;
+	font-size : 1em;
+}
+
+#install textarea{
+	background : #478;
+	color : #fff;
+	font-family : Verdana,Arial,Helvetica,sans-serif;
+	font-size : 1em;
+}
+
+#install option {
+	background : #478;
+	color : #fff;
+	font-family : Verdana,Arial,Helvetica,sans-serif;
+	font-size : 1em;
+}
+
+select#install {
+	background : #478;
+	color : #fff;
+	font-family : Verdana,Arial,Helvetica,sans-serif;
+	font-size : 1em;
+}
+
+#install input, textarea {
+	border : 1px inset #000;
+}
+/* ----------------------------------------------------
+ * Affichage style
+ * ---------------------------------------------------*/
+
+tr.tab_ligne 
+{
+	background-color:#ded;
+}
+/* ----------------------------------------------------
+ * Affichage articles
+ * ---------------------------------------------------*/
+
+div.chemin
+{
+	text-align:left;
+	background-color : #99d;
+	padding : 2px;
+	border-bottom : 1px solid #644;
+	border-right : 1px solid #644;
+}
+div a
+{
+	text-decoration : none;
+}
+div.chemin a:hover
+{
+	background : #77b;
+}
+div.rep
+{
+	text-align:left;
+	background-color : #99d;
+	padding : 2px;
+	border : 1px dotted #224;
+}
+
+div.liste
+{
+	text-align:left;
+	font-weight:bold;
+	background-color : #bbe;
+	padding:2px;
+	border : dashed 1px;
+	vertical-align:text-top;
+	
+}
+
+div.liste table
+{
+	font-weight:normal;
+	padding : 3px;
+}
+tr.premiere
+{
+	font-weight:bold;
+	padding : 2px;
+}
+div.liste a
+{
+	text-decoration: underline;
+	padding : 3px;
+}
+div.pages
+{
+	text-align:center;
+	font-weight:normal;
+}
+div.pages a
+{
+	text-decoration: none;
+	font-weight:normal;
+}
+div.pages a:active
+{
+	text-decoration: underline;
+	font-weight:normal;
+}
+
+/* ----------------------------------------------------
+ * Affichage edito
+ * ---------------------------------------------------*/
+
+#center h1.editorial
+{
+	font-size: 14px;
+	padding:0px;
+	border-bottom: solid 1px #000;
+	background-color: #bbe;
+	text-align:left;
+}
+#center h2.edito
+{
+	font-size: 10px;
+	text-align:justify;
+	padding:3px;
+	font-weight:normal;
+}
+
+div.attention
+{
+	color: #889;
+	padding: 10px;
+}
+/* ----------------------------------------------------
+ * MAIN ARTICLES
+ * ---------------------------------------------------*/
+
+div.frontpage{
+	position:relative;
+	display : block;
+	float : left;
+	padding : 5px;
+	margin-top : 10px;
+	margin-left : 6px;
+	background-color: #cce;
+	border-width : 1px 1px 1px 1px;
+	border-style : solid;
+	border-color : #999;
+	border-bottom-color : #999;
+	width:180px;
+	text-align:left;
+	height: 60px;
+}
+
+div.frontpage h1
+{
+	font-size:10px;
+	display : block;
+	float : left;
+	text-align:left;
+}
+
+div.frontpage h2
+{
+	font-size:10px;
+	display : block;
+	text-align:right;
+}
