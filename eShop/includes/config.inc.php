@@ -2,8 +2,8 @@
 // configuration file 
 $db_type = 'mysql';
 $db_host = 'localhost';
-$db_login = 'eshop';
-$db_pass = 'eshop';
+$db_login = 'root';
+$db_pass = '';
 $db_name = 'eshop';
 $db_prefix = 'prefix';
 $site_url = 'http://localhost/coder/projets/eShop';
