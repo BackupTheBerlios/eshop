@@ -369,4 +369,25 @@ CREATE TABLE prefix_users_level (
 INSERT INTO prefix_users_level VALUES ('1','Registered (no priv.)','0');#%%
 INSERT INTO prefix_users_level VALUES ('3','Root','7');#%%
 
+DROP TABLE IF EXISTS `prefix_estimate`;
+CREATE TABLE `prefix_estimate` (
+  `est_id` int(11) NOT NULL auto_increment,
+  `est_num` int(9) NOT NULL default '0',
+  `est_user_id_FK` int(9) NOT NULL default '0',
+  `est_date` date NOT NULL default '0000-00-00',
+  `est_ttc_price` float(10,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`est_id`),
+  KEY `est_id` (`est_id`,`est_num`),
+  KEY `est_user_id_FK` (`est_user_id_FK`)
+) TYPE=MyISAM ;
 
+DROP TABLE IF EXISTS `prefix_estimate_items`;
+CREATE TABLE `prefix_estimate_items` (
+  `id` int(9) NOT NULL auto_increment,
+  `est_id_FK` int(9) NOT NULL default '0',
+  `it_id_FK` int(9) NOT NULL default '0',
+  `it_price` float(10,2) NOT NULL default '0.00',
+  `it_qte` int(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `est_id_FK` (`est_id_FK`,`it_id_FK`)
+) TYPE=MyISAM;

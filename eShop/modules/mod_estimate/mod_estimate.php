@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre, R. Emourgeon & Christian KAKESA
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_estimate.php,v 1.2 2004/08/13 08:26:57 setcode Exp $
+* $Id: mod_estimate.php,v 1.3 2004/08/14 05:14:15 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -54,7 +54,7 @@ else
 		}
 		else
 		{
-			$query = "SELECT bi.bi_item_FK, it.it_name, it.it_price, bi.bi_quantity FROM ".$GLOBALS["db_prefix"]."_basket_items bi, ".$GLOBALS["db_prefix"]."_items it WHERE  bi.bi_basket_FK=".$_COOKIE["eshopcart"]." AND bi.bi_item_FK = it.it_id";
+			$query = "SELECT bi.bi_item_FK, it.it_name, it.it_price, bi.bi_quantity, it.it_price * bi.bi_quantity FROM ".$GLOBALS["db_prefix"]."_basket_items bi, ".$GLOBALS["db_prefix"]."_items it WHERE  bi.bi_basket_FK=".$_COOKIE["eshopcart"]." AND bi.bi_item_FK = it.it_id";
 
 			if(!$resultat = &$connexion->Execute($query))
 				echo $connexion->ErrorMsg();
@@ -90,6 +90,49 @@ else
 			$template->assign('user_info', $user_info);
 			
 			$template->assign('template', 'estimate');
+			
+			//insertion des infos du devis
+			if($_POST["action"]=="confirm")
+			{
+				$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .")";
+				if(!$resultat = &$connexion->Execute($query))
+					echo $connexion->ErrorMsg();
+				$est_id = mysql_insert_id();
+				$est_num = date("Ym") . sprintf("%03d",$est_id);
+				$query = "Update ".$GLOBALS["db_prefix"]."_estimate SET est_num='". $est_num ."' WHERE est_id=". $est_id;
+				if(!$resultat = &$connexion->Execute($query))
+					echo $connexion->ErrorMsg();
+				
+				//insert to table estimate_items
+				$query = "SELECT bi.bi_item_FK, it.it_price, bi.bi_quantity FROM ".$GLOBALS["db_prefix"]."_basket_items bi, ".$GLOBALS["db_prefix"]."_items it WHERE  bi.bi_basket_FK='".$_COOKIE["eshopcart"]."' AND it.it_id = bi.bi_item_FK";
+				if(!$resultat = &$connexion->Execute($query))
+					echo $connexion->ErrorMsg();
+				$table = $resultat->GetArray();
+				$count = count($table);
+				//echo $count;
+				for($i = 0; $i < $count; ++$i)
+				{
+					$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate_items VALUES ('', ".$est_num.", ".$table[$i][0].", ".$table[$i][1].", ". $table[$i][2] .")";
+					if(!$resultat = &$connexion->Execute($query))
+						echo $connexion->ErrorMsg();
+				}
+				
+				$query_item_delete = "DELETE FROM ".$GLOBALS["db_prefix"]."_basket_items WHERE bi_basket_FK='".$_COOKIE['eshopcart']."'";
+				if(!$resultat = &$connexion->Execute($query_item_delete))
+					echo $connexion->ErrorMsg();
+				
+				$template->assign('est_num', $est_num);
+				$validate = true;
+				$template->assign('validate', $validate);
+				
+				$message = "<p>Votre devis est pris en compte, un commercial va prendre contact avec vous!</p><br /><p>Vous pouvez imprimer votre devis à partir du menu. Cordialement.</p>";
+				$template_include = "message";
+			
+				$template->assign("message", $message);
+				$template->assign("template", $template_include);
+			}
+		
+			
 		}
 	}
 	else

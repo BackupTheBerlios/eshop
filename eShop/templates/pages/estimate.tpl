@@ -13,7 +13,7 @@
 		{$company_mail}
 	</td>
 	<td style="width: 100%;text-align: left;white-space: nowrap;vertical-align: top;">
-		<h3>Devis N° : <br />2004080001</h3><br />
+		<h3>Devis N° : {if $validate}{$est_num}{else}<span style="color: rgb(255, 0, 0);">à valider</span>{/if}</h3><br />
 	</td>
 </tr>
 <tr>
@@ -47,20 +47,32 @@
     <td>{$values[items][1]}</td>
     <td style="text-align: right;">{$values[items][2]|string_format:"%.2f"} {$currency}</td>
     <td style="text-align: center;">{$values[items][3]}</td>
-    <td style="text-align: right;">{$values[items][2]*$values[items][3]|string_format:"%.2f"} {$currency}</td>
+    <td style="text-align: right;">{$values[items][4]|string_format:"%.2f"} {$currency}</td>
 </tr>
+{assign var="totalTtc" value="`$totalTtc+$values[items][4]`"}
  {/section}
 <tr>
 	<td colspan="3" style="text-align: center;background-color: transparent;border-style: solid;border-color: #000000;border-width: 1px 0px 0px 0px;">&nbsp;</td>
 	<td style="text-align: left;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 0px 1px 1px;"><strong>Total (HT)</strong></td>
-	<td style="text-align: center;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;"></td>
+	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc/1.196|string_format:"%.2f"} {$currency}</td>
 </tr>
 <tr>
 	<td colspan="3" style="text-align: center;background-color: transparent;border-style: solid;border-color: #000000;border-width: 0px 0px 0px 0px;">&nbsp;</td>
 	<td style="text-align: left;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 0px 1px 1px;"><strong>Total (TTC)</strong></td>
-	<td style="text-align: center;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;"></td>
+	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc|string_format:"%.2f"} {$currency}</td>
 </tr>
 <tr>
 	<td colspan="5">&nbsp;</td>
+</tr>
+<tr>
+	{if !$validate}
+	<td>
+		<form action="index.php?module=mod_estimate" method="post">
+			<input type="text" name="action" value="confirm" size="40" maxlength="40" style="display: none;"/>
+			<input type="text" name="ttc" value="{$totalTtc|string_format:"%.2f"}" size="40" maxlength="40" style="display: none;"/>
+			<input type="submit" value="Valider" class="submit" />
+		</form>
+	</td>	
+	{/if}
 </tr>
 </table>

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/{$css}.css" />
 		<link rel="alternate stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />
 		<link rel="alternate stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
-		<link rel="alternate stylesheet" type="text/css" href="./style/silver.css" media="screen" title="silver" />     
+		<link rel="alternate stylesheet" type="text/css" href="./style/silver.css" media="screen" title="silver" />
   </head>
 	<body id="e-shop">
 	<div align="center">
