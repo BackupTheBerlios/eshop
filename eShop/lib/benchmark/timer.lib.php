@@ -17,7 +17,7 @@ endif;
 
 class Timer
 {
-  public $st; // START time
+  var $st; // START time
     
   function Timer()
   {

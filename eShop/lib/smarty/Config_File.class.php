@@ -25,7 +25,7 @@
  * @package Smarty
  */
 
-/* $Id: Config_File.class.php,v 1.2 2004/07/29 13:15:56 kilgore Exp $ */
+/* $Id: Config_File.class.php,v 1.3 2004/08/11 12:53:46 setcode Exp $ */
 
 /**
  * Config file reading class
@@ -39,29 +39,29 @@ class Config_File {
     /**
      * Controls whether variables with the same name overwrite each other.
      */
-    public $overwrite        =    true;
+    var $overwrite        =    true;
 
     /**
      * Controls whether config values of on/true/yes and off/false/no get
      * converted to boolean values automatically.
      */
-    public $booleanize        =    true;
+    var $booleanize        =    true;
 
     /**
      * Controls whether hidden config sections/vars are read from the file.
      */
-    public $read_hidden     =    true;
+    var $read_hidden     =    true;
 
     /**
      * Controls whether or not to fix mac or dos formatted newlines.
      * If set to true, \r or \r\n will be changed to \n.
      */
-    public $fix_newlines =    true;
+    var $fix_newlines =    true;
     /**#@-*/
 
     /** @access private */
-    public $_config_path    = "";
-    public $_config_data    = array();
+    var $_config_path    = "";
+    var $_config_data    = array();
     /**#@-*/
 
     /**

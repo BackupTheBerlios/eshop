@@ -7,17 +7,17 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.config.php,v 1.3 2004/07/29 13:15:58 kilgore Exp $
+* $Id: class.config.php,v 1.4 2004/08/11 12:53:45 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
 
 class Config
 {
-	public $name = null;
-	public $values = null;
-	public $autorizedSpecialChar = null;
-	public $canBeEmpty = null;
+	var $name = null;
+	var $values = null;
+	var $autorizedSpecialChar = null;
+	var $canBeEmpty = null;
 	
 	function Config() 
 	{

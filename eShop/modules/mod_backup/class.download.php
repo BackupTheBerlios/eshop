@@ -6,14 +6,14 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.download.php,v 1.3 2004/07/29 13:15:55 kilgore Exp $
+* $Id: class.download.php,v 1.4 2004/08/11 12:53:46 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
 
 class Download
 {
-	public $browser = null;
+	var $browser = null;
 
 	function Download()
 	{

@@ -7,7 +7,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: step2.inc.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
+* $Id: step2.inc.php,v 1.3 2004/08/11 12:53:45 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -110,7 +110,7 @@ else
 
 $step_header .= 'Configuration de la base de données</label>';
 
-include('.\includes\config.inc.php');
+include('./includes/config.inc.php');
 
 $template->assign('action', $action);
 $template->assign('type', $type);

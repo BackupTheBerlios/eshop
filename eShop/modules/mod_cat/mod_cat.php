@@ -5,7 +5,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_cat.php,v 1.3 2004/07/10 20:32:07 kilgore Exp $
+* $Id: mod_cat.php,v 1.4 2004/08/11 12:53:49 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -124,9 +124,10 @@ else
 				
 				$resultat = $connexion->Execute($query);
 				
-				if (!$resultat) 
+				if (!$resultat)
+				{
 					print $connexion->ErrorMsg();
-				
+				}
 				header("Location:index.php?module=mod_cat");
 				exit();
 			}

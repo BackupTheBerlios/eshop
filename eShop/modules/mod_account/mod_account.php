@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_account.php,v 1.2 2004/07/10 20:32:07 kilgore Exp $
+* $Id: mod_account.php,v 1.3 2004/08/11 12:53:47 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -109,13 +109,14 @@ switch($_REQUEST["action"])
 			else
 				$query = "UPDATE ".$db_prefix."_users SET us_email='".$_REQUEST["us_email"]."', us_name='".$_REQUEST["us_name"]."', us_first_name='".$_REQUEST["us_first_name"]."', us_company='".$_REQUEST["us_company"]."', us_address='".$_REQUEST["us_address"]."', us_NPA='".$_REQUEST["us_NPA"]."', us_city='".$_REQUEST["us_city"]."', us_country='".$_REQUEST["us_country"]."', us_newsletter='".$_REQUEST["us_newsletter"]."' WHERE us_id='".$_SESSION["id"]."'";
 
-			echo $query;
+			//echo $query;
 
 			$resultat = &$connexion->Execute($query);
 		
-			if (!$resultat) 
+			if (!$resultat)
+			{
 				print $connexion->ErrorMsg();
-			
+			}
 			header("Location:index.php?module=mod_account");
 			exit();
 		}
