@@ -17,10 +17,6 @@
     <td class="alignleft"><input type="text" name="ca_name" value="{$ca_name}"/></td>
   </tr>
   <tr>
-    <td class="alignleft">Level</td>
-    <td class="alignleft">{$ca_level}</td>
-  </tr>
-  <tr>
     <td class="alignleft">Sous-catégorie de</td>
     <td class="alignleft">{$ca_cat_FK}</td>
   </tr>

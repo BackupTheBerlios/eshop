@@ -108,24 +108,19 @@ else
 				if ($_REQUEST["ca_cat_FK"] == "")
 				{
 					$ca_cat_FK = 0; 
-					$niveau=0;
 				}
 				else
 				{
 					$ca_cat_FK = $_REQUEST["ca_cat_FK"];
-					$query_FK = "SELECT ca_level FROM ".$db_prefix."_cat WHERE ca_id=".$_REQUEST["ca_cat_FK"];
-					$resultat = &$connexion->Execute($query_FK);
-					$niveau = $resultat->fields["ca_level"] + 1;
 				}
 				
 				if(isset($_REQUEST["id"]))
 				{
-					$query = "UPDATE ".$db_prefix."_cat SET ca_level=".$niveau.", ca_name=".$connexion->qstr($_REQUEST["ca_name"],get_magic_quotes_gpc()).", ca_cat_FK=".$ca_cat_FK.", ca_description=".$connexion->qstr($_REQUEST["ca_description"],get_magic_quotes_gpc())." WHERE ca_id=".$_REQUEST["id"];
+					$query = "UPDATE ".$db_prefix."_cat SET ca_name=".$connexion->qstr($_REQUEST["ca_name"],get_magic_quotes_gpc()).", ca_cat_FK=".$ca_cat_FK.", ca_description=".$connexion->qstr($_REQUEST["ca_description"],get_magic_quotes_gpc())." WHERE ca_id=".$_REQUEST["id"];
 					
-					// update all the subcategories level ?!?
 				}
 				else
-					$query = "INSERT INTO ".$db_prefix."_cat (ca_name, ca_description, ca_level, ca_cat_FK) VALUES (".$connexion->qstr($_REQUEST["ca_name"],get_magic_quotes_gpc()).", ".$connexion->qstr($_REQUEST["ca_description"],get_magic_quotes_gpc()).", ".$niveau.", ".$_REQUEST["ca_cat_FK"].")";
+					$query = "INSERT INTO ".$db_prefix."_cat (ca_name, ca_description, ca_cat_FK) VALUES (".$connexion->qstr($_REQUEST["ca_name"],get_magic_quotes_gpc()).", ".$connexion->qstr($_REQUEST["ca_description"],get_magic_quotes_gpc()).", ".$_REQUEST["ca_cat_FK"].")";
 				
 				$resultat = $connexion->Execute($query);
 				
@@ -141,7 +136,6 @@ else
 			$query = "SELECT * FROM ".$db_prefix."_cat WHERE ca_id=".$_REQUEST["id"];
 			$resultat = &$connexion->Execute($query);			
 			
-			$template->assign('ca_level',$resultat->fields["ca_level"]);
 			$template->assign('ca_id',$resultat->fields["ca_id"]);
 			$template->assign('ca_name',$resultat->fields["ca_name"]);
 			$template->assign('ca_description',$resultat->fields["ca_description"]);
@@ -181,9 +175,9 @@ else
 			
 		default:
 			if(isset($_REQUEST["action"]) AND $_REQUEST["action"] == "recherche")
-				$query = "SELECT ca_id, ca_name, ca_level FROM ".$db_prefix."_cat WHERE ca_id LIKE '".$_REQUEST["ca_id"]."%' AND ca_name LIKE '".$_REQUEST["ca_name"]."%' AND ca_level LIKE '".$_REQUEST["ca_level"]."%' ORDER BY ca_level";
+				$query = "SELECT ca_id, ca_name FROM ".$db_prefix."_cat WHERE ca_id LIKE '".$_REQUEST["ca_id"]."%' AND ca_name LIKE '".$_REQUEST["ca_name"]."%'";
 			else
-				$query = "SELECT ca_id, ca_name, ca_level FROM ".$db_prefix."_cat ORDER BY ca_level";
+				$query = "SELECT ca_id, ca_name FROM ".$db_prefix."_cat";
 				
 			$resultat = &$connexion->Execute($query);
 						

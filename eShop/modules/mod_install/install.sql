@@ -26,7 +26,6 @@ CREATE TABLE prefix_cat (
     ca_id int(9) NOT NULL auto_increment,
     ca_name varchar(50) NOT NULL,
     ca_description longtext NOT NULL,
-    ca_level int(9) DEFAULT '0' NOT NULL,
     ca_cat_FK int(9) DEFAULT '0' NOT NULL,
     ca_comments varchar(255) NOT NULL,
    PRIMARY KEY (ca_id)

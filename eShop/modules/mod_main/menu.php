@@ -11,7 +11,7 @@
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
 
-$query = "SELECT ca_id, ca_name FROM ".$db_prefix."_cat WHERE ca_level=0";
+$query = "SELECT ca_id, ca_name FROM ".$db_prefix."_cat WHERE ca_cat_FK=0";
 
 $recordSet = &$connexion->Execute($query);
 

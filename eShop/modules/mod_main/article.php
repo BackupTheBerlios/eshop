@@ -55,7 +55,7 @@ if(isset($_REQUEST["cat"]))
 		$query_art = "SELECT * FROM ".$db_prefix."_cat WHERE ca_id=".$_REQUEST["cat"];
 		$recordSet_art = &$connexion->Execute($query_art);
 		
-		$cat_FK = $recordSet_art->fields["ca_level"];
+		$cat_FK = $recordSet_art->fields["ca_cat_FK"];
 		$categorie = '<a href="'.$_SERVER["PHP_SELF"].'?module=mod_main&cat='.$recordSet_art->fields["ca_id"].'"><accronym title="'.$recordSet_art->fields["ca_description"].'">'.$recordSet_art->fields["ca_name"].'</accronym></a>';
 		
 		// display subcat in the top bar
