@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: set_env.php,v 1.5 2004/08/17 13:36:28 kilgore Exp $
+* $Id: set_env.php,v 1.6 2004/08/19 02:07:49 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../erreur.html"));
@@ -29,6 +29,9 @@ include("./lib/session/session.php");
 
 // include for the adodb library
 include("./lib/adodb/adodb.inc.php");
+
+//include for the libsql library
+include("./lib/libsql/LibSql.class.php");
 
 /* init the template */
 $template = new Smarty_eshop;

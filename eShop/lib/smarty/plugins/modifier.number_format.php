@@ -13,7 +13,7 @@
  * Name:     number_format<br>
  * Purpose:  format number via number_format
  * @link http://smarty.php.net/manual/en/language.modifier.number.format.php
- *          string_format (Smarty online manual) not implemented
+ *          number_format (Smarty online manual) not implemented
  * @param float
  * @param int
  * @param string

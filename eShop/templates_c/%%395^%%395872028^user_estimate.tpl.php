@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-08-18 04:29:18
+<?php /* Smarty version 2.6.2, created on 2004-08-18 19:39:04
          compiled from ./pages/mod_estimate/user_estimate.tpl */ ?>
 <?php require_once(SMARTY_DIR . 'core' . DIRECTORY_SEPARATOR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', './pages/mod_estimate/user_estimate.tpl', 14, false),array('modifier', 'number_format', './pages/mod_estimate/user_estimate.tpl', 15, false),)), $this); ?>
@@ -41,7 +41,7 @@ $this->_sections['estimate']['last']       = ($this->_sections['estimate']['iter
 </a></td>
 	   		<td class="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d-%m-%Y") : smarty_modifier_date_format($_tmp, "%d-%m-%Y")); ?>
 </td>
-			<td class="right"><?php echo ((is_array($_tmp=$this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_ttc_price'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ".", "") : smarty_modifier_number_format($_tmp, 2, ".", "")); ?>
+			<td class="right"><?php echo ((is_array($_tmp=$this->_tpl_vars['encours'][$this->_sections['estimate']['index']]['est_ttc_price'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </td>
 	   		<td class="center"><img src="./images/red.png" height="10"/></td>
@@ -85,7 +85,7 @@ $this->_sections['traite']['last']       = ($this->_sections['traite']['iteratio
 </a></td>
     		<td class="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d-%m-%Y") : smarty_modifier_date_format($_tmp, "%d-%m-%Y")); ?>
 </td>
-	   		<td class="right"><?php echo ((is_array($_tmp=$this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_ttc_price'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ".", "") : smarty_modifier_number_format($_tmp, 2, ".", "")); ?>
+	   		<td class="right"><?php echo ((is_array($_tmp=$this->_tpl_vars['traite'][$this->_sections['traite']['index']]['est_ttc_price'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2, ",", ' ') : smarty_modifier_number_format($_tmp, 2, ",", ' ')); ?>
  <?php echo $this->_tpl_vars['currency']; ?>
 </td>
 	   		<td class="center"><img src="./images/green.png" height="10"/></td>

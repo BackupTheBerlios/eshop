@@ -12,7 +12,7 @@
 		<tr>	
 	   		<td class="center"><a id="est_link" href="#">{$encours[estimate].est_num}</a></td>
 	   		<td class="center">{$encours[estimate].est_date|date_format:"%d-%m-%Y"}</td>
-			<td class="right">{$encours[estimate].est_ttc_price|number_format:2:".":""} {$currency}</td>
+			<td class="right">{$encours[estimate].est_ttc_price|number_format:2:",":" "} {$currency}</td>
 	   		<td class="center"><img src="./images/red.png" height="10"/></td>
 	   	</tr>
    	{/section}
@@ -29,7 +29,7 @@
     	<tr>	
 	   		<td class="center"><a id="est_link" href="#">{$traite[traite].est_num}</a></td>
     		<td class="center">{$traite[traite].est_date|date_format:"%d-%m-%Y"}</td>
-	   		<td class="right">{$traite[traite].est_ttc_price|number_format:2:".":""} {$currency}</td>
+	   		<td class="right">{$traite[traite].est_ttc_price|number_format:2:",":" "} {$currency}</td>
 	   		<td class="center"><img src="./images/green.png" height="10"/></td>
 	   	</tr>
 	{/section}

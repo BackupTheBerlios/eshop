@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre, R. Emourgeon & Christian KAKESA
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_estimate.php,v 1.6 2004/08/18 02:38:16 setcode Exp $
+* $Id: mod_estimate.php,v 1.7 2004/08/19 02:07:48 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -38,7 +38,7 @@ else
 	{
 		case "confirm" :
 			//insert data to table est_estimate
-			$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .", 0, '".$_SESSION['us_company']."', '".$_SESSION['us_first_name']."', '".$_SESSION['us_name']."', '".$_SESSION['us_address']."', '".$_SESSION['us_NPA']."', '".$_SESSION['us_city']."', '".$_SESSION['us_country']."', '".$_SESSION['us_email']."')";
+			$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". LibSql::Number($_POST["ttc"]) .", 0, '".$_SESSION['us_company']."', '".$_SESSION['us_first_name']."', '".$_SESSION['us_name']."', '".$_SESSION['us_address']."', '".$_SESSION['us_NPA']."', '".$_SESSION['us_city']."', '".$_SESSION['us_country']."', '".$_SESSION['us_email']."')";
 			if(!$resultat = &$connexion->Execute($query))
 				echo $connexion->ErrorMsg();
 			$est_id = mysql_insert_id();
