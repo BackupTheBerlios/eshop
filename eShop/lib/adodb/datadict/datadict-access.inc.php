@@ -15,8 +15,8 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_access extends ADODB_DataDict {
 	
-	public $databaseType = 'access';
-	public $seqField = false;
+	var $databaseType = 'access';
+	var $seqField = false;
 	
  	
  	function ActualType($meta)

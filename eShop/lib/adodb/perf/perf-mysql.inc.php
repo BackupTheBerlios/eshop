@@ -17,9 +17,9 @@ if (!defined('ADODB_DIR')) die();
 
 class perf_mysql extends adodb_perf{
 	
-	public $tablesSQL = 'show table status';
+	var $tablesSQL = 'show table status';
 	
-	public $createTableSQL = "CREATE TABLE adodb_logsql (
+	var $createTableSQL = "CREATE TABLE adodb_logsql (
 		  created datetime NOT NULL,
 		  sql0 varchar(250) NOT NULL,
 		  sql1 text NOT NULL,
@@ -28,7 +28,7 @@ class perf_mysql extends adodb_perf{
 		  timer decimal(16,6) NOT NULL
 		)";
 		
-	public $settings = array(
+	var $settings = array(
 	'Ratios',
 		'MyISAM cache hit ratio' => array('RATIO',
 			'=GetKeyHitRatio',

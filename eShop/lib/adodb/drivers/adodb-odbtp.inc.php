@@ -15,23 +15,23 @@ if (!defined('ADODB_DIR')) die();
 define("_ADODB_ODBTP_LAYER", 2 );
 
 class ADODB_odbtp extends ADOConnection{
-	public $databaseType = "odbtp";
-	public $dataProvider = "odbtp";
-	public $fmtDate = "'Y-m-d'";
-	public $fmtTimeStamp = "'Y-m-d, h:i:sA'";
-	public $replaceQuote = "''"; // string to use to replace quotes
-	public $odbc_driver = 0;
-	public $hasAffectedRows = true;
-	public $hasInsertID = false;
-	public $hasGenID = true;
-	public $hasMoveFirst = true;
+	var $databaseType = "odbtp";
+	var $dataProvider = "odbtp";
+	var $fmtDate = "'Y-m-d'";
+	var $fmtTimeStamp = "'Y-m-d, h:i:sA'";
+	var $replaceQuote = "''"; // string to use to replace quotes
+	var $odbc_driver = 0;
+	var $hasAffectedRows = true;
+	var $hasInsertID = false;
+	var $hasGenID = true;
+	var $hasMoveFirst = true;
 
-	public $_genSeqSQL = "create table %s (seq_name char(30) not null unique , seq_value integer not null)";
-	public $_dropSeqSQL = "delete from adodb_seq where seq_name = '%s'";
-	public $_autocommit = true;
-	public $_bindInputArray = false;
-	public $_useUnicodeSQL = false;
-	public $_canPrepareSP = false;
+	var $_genSeqSQL = "create table %s (seq_name char(30) not null unique , seq_value integer not null)";
+	var $_dropSeqSQL = "delete from adodb_seq where seq_name = '%s'";
+	var $_autocommit = true;
+	var $_bindInputArray = false;
+	var $_useUnicodeSQL = false;
+	var $_canPrepareSP = false;
 
 	function ADODB_odbtp()
 	{
@@ -522,8 +522,8 @@ class ADODB_odbtp extends ADOConnection{
 
 class ADORecordSet_odbtp extends ADORecordSet {
 
-	public $databaseType = 'odbtp';
-	public $canSeek = true;
+	var $databaseType = 'odbtp';
+	var $canSeek = true;
 
 	function ADORecordSet_odbtp($queryID,$mode=false)
 	{

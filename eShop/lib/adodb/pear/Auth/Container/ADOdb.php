@@ -17,7 +17,7 @@
 // |	Richard Tango-Lowy <richtl@arscognita.com>                                  |
 // +----------------------------------------------------------------------+
 //
-// $Id: ADOdb.php,v 1.1 2004/07/29 13:27:36 kilgore Exp $
+// $Id: ADOdb.php,v 1.2 2004/08/08 10:11:13 kilgore Exp $
 //
 
 require_once 'Auth/Container.php';
@@ -35,7 +35,7 @@ require_once 'adodb-errorpear.inc.php';
  *
  * @author   Richard Tango-Lowy <richtl@arscognita.com>
  * @package  Auth
- * @version  $Revision: 1.1 $
+ * @version  $Revision: 1.2 $
  */
 class Auth_Container_ADOdb extends Auth_Container
 {
@@ -44,20 +44,20 @@ class Auth_Container_ADOdb extends Auth_Container
      * Additional options for the storage container
      * @var array
      */
-    public $options = array();
+    var $options = array();
 
     /**
      * DB object
      * @var object
      */
-    public $db = null;
-    public $dsn = '';
+    var $db = null;
+    var $dsn = '';
 	
     /**
      * User that is currently selected from the DB.
      * @var string
      */
-    public $activeUser = '';
+    var $activeUser = '';
 
     // {{{ Constructor
 

@@ -22,12 +22,12 @@ if (!defined('ADODB_SAPDB')){
 define('ADODB_SAPDB',1);
 
 class ADODB_SAPDB extends ADODB_odbc {
-	public $databaseType = "sapdb";	
-	public $concat_operator = '||';
-	public $sysDate = 'DATE';
-	public $sysTimeStamp = 'TIMESTAMP';
-	public $fmtDate = "\\D\\A\\T\\E('Y-m-d')";	/// used by DBDate() as the default date format used by the database
-	public $fmtTimeStamp = "\\T\\I\\M\\E\\S\\T\\A\\M\\P('Y-m-d','H:i:s')"; /// used by DBTimeStamp as the default timestamp fmt.
+	var $databaseType = "sapdb";	
+	var $concat_operator = '||';
+	var $sysDate = 'DATE';
+	var $sysTimeStamp = 'TIMESTAMP';
+	var $fmtDate = "\\D\\A\\T\\E('Y-m-d')";	/// used by DBDate() as the default date format used by the database
+	var $fmtTimeStamp = "\\T\\I\\M\\E\\S\\T\\A\\M\\P('Y-m-d','H:i:s')"; /// used by DBTimeStamp as the default timestamp fmt.
 	
 	function ADODB_SAPDB()
 	{
@@ -54,7 +54,7 @@ class ADODB_SAPDB extends ADODB_odbc {
 
 class  ADORecordSet_sapdb extends ADORecordSet_odbc {	
 	
-	public $databaseType = "sapdb";		
+	var $databaseType = "sapdb";		
 	
 	function ADORecordSet_sapdb($id,$mode=false)
 	{

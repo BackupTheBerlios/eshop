@@ -20,10 +20,10 @@ include_once(ADODB_DIR."/drivers/adodb-mysql.inc.php");
 
 
 class ADODB_mysqlt extends ADODB_mysql {
-	public $databaseType = 'mysqlt';
-	public $ansiOuter = true; // for Version 3.23.17 or later
-	public $hasTransactions = true;
-	public $autoRollback = true; // apparently mysql does not autorollback properly 
+	var $databaseType = 'mysqlt';
+	var $ansiOuter = true; // for Version 3.23.17 or later
+	var $hasTransactions = true;
+	var $autoRollback = true; // apparently mysql does not autorollback properly 
 	
 	function ADODB_mysqlt() 
 	{			
@@ -62,7 +62,7 @@ class ADODB_mysqlt extends ADODB_mysql {
 }
 
 class ADORecordSet_mysqlt extends ADORecordSet_mysql{	
-	public $databaseType = "mysqlt";
+	var $databaseType = "mysqlt";
 	
 	function ADORecordSet_mysqlt($queryID,$mode=false) 
 	{

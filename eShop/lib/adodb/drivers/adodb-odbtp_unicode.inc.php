@@ -28,8 +28,8 @@ if (!defined('_ADODB_ODBTP_LAYER')) {
 }
 
 class ADODB_odbtp_unicode extends ADODB_odbtp {
-	public $databaseType = "odbtp_unicode";
-	public $_useUnicodeSQL = true;
+	var $databaseType = "odbtp_unicode";
+	var $_useUnicodeSQL = true;
 
 	function ADODB_odbtp_unicode()
 	{
@@ -38,7 +38,7 @@ class ADODB_odbtp_unicode extends ADODB_odbtp {
 }
 
 class ADORecordSet_odbtp_unicode extends ADORecordSet_odbtp {
-	public $databaseType = 'odbtp_unicode';
+	var $databaseType = 'odbtp_unicode';
 
 	function ADORecordSet_odbtp_unicode($queryID,$mode=false)
 	{

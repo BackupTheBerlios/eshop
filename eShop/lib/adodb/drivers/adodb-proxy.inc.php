@@ -17,11 +17,11 @@ if (! defined("_ADODB_PROXY_LAYER")) {
 	 include(ADODB_DIR."/drivers/adodb-csv.inc.php");
 	 
 	class ADODB_proxy extends ADODB_csv {
-		public $databaseType = 'proxy';
-		public $databaseProvider = 'csv';
+		var $databaseType = 'proxy';
+		var $databaseProvider = 'csv';
 	}
 	class ADORecordset_proxy extends ADORecordset_csv {
-	public $databaseType = "proxy";		
+	var $databaseType = "proxy";		
 	
 		function ADORecordset_proxy($id,$mode=false) 
 		{

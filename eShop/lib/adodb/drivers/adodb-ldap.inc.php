@@ -14,16 +14,16 @@
 if (!defined('ADODB_DIR')) die();
 
 class ADODB_ldap extends ADOConnection {
-    public $databaseType = 'ldap';
-	public $dataProvider = 'ldap';
+    var $databaseType = 'ldap';
+	var $dataProvider = 'ldap';
 	
 	# Connection information
-    public $username = false;
-    public $password = false;
+    var $username = false;
+    var $password = false;
     
     # Used during searches
-    public $filter;
-    public $dn;
+    var $filter;
+    var $dn;
 
 
 	function ADODB_ldap() 
@@ -175,9 +175,9 @@ class ADODB_ldap extends ADOConnection {
 
 class ADORecordSet_ldap extends ADORecordSet{	
 	
-	public $databaseType = "ldap";
-	public $canSeek = false;
-	public $_entryID; /* keeps track of the entry resource identifier */
+	var $databaseType = "ldap";
+	var $canSeek = false;
+	var $_entryID; /* keeps track of the entry resource identifier */
 	
 	function ADORecordSet_ldap($queryID,$mode=false) 
 	{
@@ -194,8 +194,12 @@ class ADORecordSet_ldap extends ADORecordSet{
 		  $this->fetchMode = LDAP_ASSOC; 
 		break;
 		case ADODB_FETCH_DEFAULT:
-		case ADODB_FETCH_BOTH: $this->fetchMode = LDAP_BOTH;break;
-		default:$this->fetchMode = LDAP_BOTH;break;
+		case ADODB_FETCH_BOTH: 
+		  $this->fetchMode = LDAP_BOTH; 
+		break;
+		default:
+		  $this->fetchMode = LDAP_BOTH; 
+		break;
 		}
 	
 		$this->ADORecordSet($queryID);	

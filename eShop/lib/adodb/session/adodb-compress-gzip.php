@@ -21,11 +21,11 @@ if (!function_exists('gzcompress')) {
 class ADODB_Compress_Gzip {
 	/**
 	 */
-	public $_level = null;
+	var $_level = null;
 
 	/**
 	 */
-	public $_min_length = 1;
+	var $_min_length = 1;
 
 	/**
 	 */

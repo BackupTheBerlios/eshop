@@ -12,7 +12,7 @@
  *
  * Last Editor: $Author: kilgore $
  * @author Richard Tango-Lowy & Dan Cech
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  *
  * @package axmls
  * @tutorial getting_started.pkg
@@ -94,12 +94,12 @@ class dbObject {
 	/**
 	* var object Parent
 	*/
-	public $parent;
+	var $parent;
 	
 	/**
 	* var string current element
 	*/
-	public $currentElement;
+	var $currentElement;
 	
 	/**
 	* NOP
@@ -194,39 +194,39 @@ class dbTable extends dbObject {
 	/**
 	* @var string Table name
 	*/
-	public $name;
+	var $name;
 	
 	/**
 	* @var array Field specifier: Meta-information about each field
 	*/
-	public $fields = array();
+	var $fields = array();
 	
 	/**
 	* @var array List of table indexes.
 	*/
-	public $indexes = array();
+	var $indexes = array();
 	
 	/**
 	* @var array Table options: Table-level options
 	*/
-	public $opts = array();
+	var $opts = array();
 	
 	/**
 	* @var string Field index: Keeps track of which field is currently being processed
 	*/
-	public $current_field;
+	var $current_field;
 	
 	/**
 	* @var boolean Mark table for destruction
 	* @access private
 	*/
-	public $drop_table;
+	var $drop_table;
 	
 	/**
 	* @var boolean Mark field for destruction (not yet implemented)
 	* @access private
 	*/
-	public $drop_field = array();
+	var $drop_field = array();
 	
 	/**
 	* Iniitializes a new table object.
@@ -600,23 +600,23 @@ class dbIndex extends dbObject {
 	/**
 	* @var string	Index name
 	*/
-	public $name;
+	var $name;
 	
 	/**
 	* @var array	Index options: Index-level options
 	*/
-	public $opts = array();
+	var $opts = array();
 	
 	/**
 	* @var array	Indexed fields: Table columns included in this index
 	*/
-	public $columns = array();
+	var $columns = array();
 	
 	/**
 	* @var boolean Mark index for destruction
 	* @access private
 	*/
-	public $drop = FALSE;
+	var $drop = FALSE;
 	
 	/**
 	* Initializes the new dbIndex object.
@@ -758,9 +758,9 @@ class dbIndex extends dbObject {
 */
 class dbData extends dbObject {
 	
-	public $data = array();
+	var $data = array();
 	
-	public $row;
+	var $row;
 	
 	/**
 	* Initializes the new dbIndex object.
@@ -945,22 +945,22 @@ class dbQuerySet extends dbObject {
 	/**
 	* @var array	List of SQL queries
 	*/
-	public $queries = array();
+	var $queries = array();
 	
 	/**
 	* @var string	String used to build of a query line by line
 	*/
-	public $query;
+	var $query;
 	
 	/**
 	* @var string	Query prefix key
 	*/
-	public $prefixKey = '';
+	var $prefixKey = '';
 	
 	/**
 	* @var boolean	Auto prefix enable (TRUE)
 	*/
-	public $prefixMethod = 'AUTO';
+	var $prefixMethod = 'AUTO';
 	
 	/**
 	* Initializes the query set.
@@ -1194,7 +1194,7 @@ class dbQuerySet extends dbObject {
 * @tutorial getting_started.pkg
 *
 * @author Richard Tango-Lowy & Dan Cech
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 *
 * @package axmls
 */
@@ -1204,76 +1204,76 @@ class adoSchema {
 	* @var array	Array containing SQL queries to generate all objects
 	* @access private
 	*/
-	public $sqlArray;
+	var $sqlArray;
 	
 	/**
 	* @var object	ADOdb connection object
 	* @access private
 	*/
-	public $db;
+	var $db;
 	
 	/**
 	* @var object	ADOdb Data Dictionary
 	* @access private
 	*/
-	public $dict;
+	var $dict;
 	
 	/**
 	* @var string Current XML element
 	* @access private
 	*/
-	public $currentElement = '';
+	var $currentElement = '';
 	
 	/**
 	* @var string If set (to 'ALTER' or 'REPLACE'), upgrade an existing database
 	* @access private
 	*/
-	public $upgrade = '';
+	var $upgrade = '';
 	
 	/**
 	* @var string Optional object prefix
 	* @access private
 	*/
-	public $objectPrefix = '';
+	var $objectPrefix = '';
 	
 	/**
 	* @var long	Original Magic Quotes Runtime value
 	* @access private
 	*/
-	public $mgq;
+	var $mgq;
 	
 	/**
 	* @var long	System debug
 	* @access private
 	*/
-	public $debug;
+	var $debug;
 	
 	/**
 	* @var string Regular expression to find schema version
 	* @access private
 	*/
-	public $versionRegex = '/<schema.*?( version="([^"]*)")?.*?>/';
+	var $versionRegex = '/<schema.*?( version="([^"]*)")?.*?>/';
 	
 	/**
 	* @var string Current schema version
 	* @access private
 	*/
-	public $schemaVersion;
+	var $schemaVersion;
 	
 	/**
 	* @var int	Success of last Schema execution
 	*/
-	public $success;
+	var $success;
 	
 	/**
 	* @var bool	Execute SQL inline as it is generated
 	*/
-	public $executeInline;
+	var $executeInline;
 	
 	/**
 	* @var bool	Continue SQL execution if errors occur
 	*/
-	public $continueOnError;
+	var $continueOnError;
 	
 	/**
 	* Creates an adoSchema object

@@ -16,16 +16,16 @@ V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights res
 if (!defined('ADODB_DIR')) die();
 
 class ADODB_oracle extends ADOConnection {
-	public $databaseType = "oracle";
-	public $replaceQuote = "''"; // string to use to replace quotes
-	public $concat_operator='||';
-	public $_curs;
-	public $_initdate = true; // init date to YYYY-MM-DD
-	public $metaTablesSQL = 'select table_name from cat';	
-	public $metaColumnsSQL = "select cname,coltype,width from col where tname='%s' order by colno";
-	public $sysDate = "TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'),'YYYY-MM-DD')";
-	public $sysTimeStamp = 'SYSDATE';
-	public $connectSID = true;
+	var $databaseType = "oracle";
+	var $replaceQuote = "''"; // string to use to replace quotes
+	var $concat_operator='||';
+	var $_curs;
+	var $_initdate = true; // init date to YYYY-MM-DD
+	var $metaTablesSQL = 'select table_name from cat';	
+	var $metaColumnsSQL = "select cname,coltype,width from col where tname='%s' order by colno";
+	var $sysDate = "TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'),'YYYY-MM-DD')";
+	var $sysTimeStamp = 'SYSDATE';
+	var $connectSID = true;
 	
 	function ADODB_oracle() 
 	{
@@ -194,8 +194,8 @@ class ADODB_oracle extends ADOConnection {
 
 class ADORecordset_oracle extends ADORecordSet {
 
-	public $databaseType = "oracle";
-	public $bind = false;
+	var $databaseType = "oracle";
+	var $bind = false;
 
 	function ADORecordset_oracle($queryID,$mode=false)
 	{

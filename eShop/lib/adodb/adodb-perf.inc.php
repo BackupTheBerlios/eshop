@@ -165,18 +165,18 @@ Each database parameter element in the array is itself an array consisting of:
 */
 
 class adodb_perf {
-	public $conn;
-	public $color = '#F0F0F0';
-	public $table = '<table border=1 bgcolor=white>';
-	public $titles = '<tr><td><b>Parameter</b></td><td><b>Value</b></td><td><b>Description</b></td></tr>';
-	public $warnRatio = 90;
-	public $tablesSQL = false;
-	public $cliFormat = "%32s => %s \r\n";
-	public $sql1 = 'sql1';  // used for casting sql1 to text for mssql
-	public $explain = true;
-	public $helpurl = "<a href=http://phplens.com/adodb/reference.functions.fnexecute.and.fncacheexecute.properties.html#logsql>LogSQL help</a>";
-	public $createTableSQL = false;
-	public $maxLength = 2000;
+	var $conn;
+	var $color = '#F0F0F0';
+	var $table = '<table border=1 bgcolor=white>';
+	var $titles = '<tr><td><b>Parameter</b></td><td><b>Value</b></td><td><b>Description</b></td></tr>';
+	var $warnRatio = 90;
+	var $tablesSQL = false;
+	var $cliFormat = "%32s => %s \r\n";
+	var $sql1 = 'sql1';  // used for casting sql1 to text for mssql
+	var $explain = true;
+	var $helpurl = "<a href=http://phplens.com/adodb/reference.functions.fnexecute.and.fncacheexecute.properties.html#logsql>LogSQL help</a>";
+	var $createTableSQL = false;
+	var $maxLength = 2000;
 	
     // Sets the tablename to be used            
     function table($newtable = false)
@@ -273,7 +273,7 @@ Committed_AS:   348732 kB
 	/*
 		Remember that this is client load, not db server load!
 	*/
-	public $_lastLoad;
+	var $_lastLoad;
 	function CPULoad()
 	{
 		$info = $this->_CPULoad();
@@ -630,8 +630,7 @@ Committed_AS:   348732 kB
 	 "</tr></table>";
 
 	 
-	 	switch ($do) 
-	 	{
+	 	switch ($do) {
 		case 'stats':
 			echo $this->HealthCheck();
 			//$this->conn->debug=1;
@@ -660,6 +659,11 @@ Committed_AS:   348732 kB
 			break;
 		case 'tables': 
 			echo $this->Tables(); break;
+		default:
+			echo $this->HealthCheck();
+			//$this->conn->debug=1;
+			echo $this->CheckMemory();
+			break;
 		}
 		global $ADODB_vers;
 		echo "<p><div align=center><font size=1>$ADODB_vers Sponsored by <a href=http://phplens.com/>phpLens</a></font></div>";

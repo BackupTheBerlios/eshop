@@ -16,10 +16,10 @@ if (!defined('ADODB_DIR')) die();
 include_once(ADODB_DIR."/drivers/adodb-ibase.inc.php");
 
 class ADODB_firebird extends ADODB_ibase {
-	public $databaseType = "firebird";	
-	public $dialect = 3;
+	var $databaseType = "firebird";	
+	var $dialect = 3;
 	
-	public $sysTimeStamp = "cast('NOW' as timestamp)";
+	var $sysTimeStamp = "cast('NOW' as timestamp)";
 	
 	function ADODB_firebird()
 	{	
@@ -32,11 +32,9 @@ class ADODB_firebird extends ADODB_ibase {
 		switch($arr['dialect']) {
 		case '': 
 		case '1': $s = 'Firebird Dialect 1'; break;
-		case '2': $s = 'Firebird Dialect 2'; break;
+		case '2': $s = 'Firebird Dialect 2'; break;		
 		case '3': $s = 'Firebird Dialect 3'; break;
-		
-		default:
-			$s = 'Firebird Dialect 3';
+		default: $s = 'Firebird Dialect 3'; break;
 		}
 		$arr['version'] = ADOConnection::_findvers($s);
 		$arr['description'] = $s;
@@ -67,7 +65,7 @@ class ADODB_firebird extends ADODB_ibase {
 
 class  ADORecordSet_firebird extends ADORecordSet_ibase {	
 	
-	public $databaseType = "firebird";		
+	var $databaseType = "firebird";		
 	
 	function ADORecordSet_firebird($id,$mode=false)
 	{

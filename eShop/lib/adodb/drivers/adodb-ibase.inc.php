@@ -27,31 +27,31 @@ V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights res
 if (!defined('ADODB_DIR')) die();
 
 class ADODB_ibase extends ADOConnection {
-	public $databaseType = "ibase";
-	public $dataProvider = "ibase";
-	public $replaceQuote = "''"; // string to use to replace quotes
-	public $ibase_datefmt = '%Y-%m-%d'; // For hours,mins,secs change to '%Y-%m-%d %H:%M:%S';
-	public $fmtDate = "'Y-m-d'";
-	public $ibase_timestampfmt = "%Y-%m-%d %H:%M:%S";
-	public $ibase_timefmt = "%H:%M:%S";
-	public $fmtTimeStamp = "'Y-m-d, H:i:s'";
-	public $concat_operator='||';
-	public $_transactionID;
-	public $metaTablesSQL = "select rdb\$relation_name from rdb\$relations where rdb\$relation_name not like 'RDB\$%'";
+	var $databaseType = "ibase";
+	var $dataProvider = "ibase";
+	var $replaceQuote = "''"; // string to use to replace quotes
+	var $ibase_datefmt = '%Y-%m-%d'; // For hours,mins,secs change to '%Y-%m-%d %H:%M:%S';
+	var $fmtDate = "'Y-m-d'";
+	var $ibase_timestampfmt = "%Y-%m-%d %H:%M:%S";
+	var $ibase_timefmt = "%H:%M:%S";
+	var $fmtTimeStamp = "'Y-m-d, H:i:s'";
+	var $concat_operator='||';
+	var $_transactionID;
+	var $metaTablesSQL = "select rdb\$relation_name from rdb\$relations where rdb\$relation_name not like 'RDB\$%'";
 	//OPN STUFF start
-	public $metaColumnsSQL = "select a.rdb\$field_name, a.rdb\$null_flag, a.rdb\$default_source, b.rdb\$field_length, b.rdb\$field_scale, b.rdb\$field_sub_type, b.rdb\$field_precision, b.rdb\$field_type from rdb\$relation_fields a, rdb\$fields b where a.rdb\$field_source = b.rdb\$field_name and a.rdb\$relation_name = '%s' order by a.rdb\$field_position asc";
+	var $metaColumnsSQL = "select a.rdb\$field_name, a.rdb\$null_flag, a.rdb\$default_source, b.rdb\$field_length, b.rdb\$field_scale, b.rdb\$field_sub_type, b.rdb\$field_precision, b.rdb\$field_type from rdb\$relation_fields a, rdb\$fields b where a.rdb\$field_source = b.rdb\$field_name and a.rdb\$relation_name = '%s' order by a.rdb\$field_position asc";
 	//OPN STUFF end
-	public $ibasetrans;
-	public $hasGenID = true;
-	public $_bindInputArray = true;
-	public $buffers = 0;
-	public $dialect = 1;
-	public $sysDate = "cast('TODAY' as timestamp)";
-	public $sysTimeStamp = "cast('NOW' as timestamp)";
-	public $ansiOuter = true;
-	public $hasAffectedRows = false;
-	public $poorAffectedRows = true;
-	public $blobEncodeType = 'C';
+	var $ibasetrans;
+	var $hasGenID = true;
+	var $_bindInputArray = true;
+	var $buffers = 0;
+	var $dialect = 1;
+	var $sysDate = "cast('TODAY' as timestamp)";
+	var $sysTimeStamp = "cast('NOW' as timestamp)";
+	var $ansiOuter = true;
+	var $hasAffectedRows = false;
+	var $poorAffectedRows = true;
+	var $blobEncodeType = 'C';
 	
 	function ADODB_ibase() 
 	{
@@ -119,11 +119,9 @@ class ADODB_ibase extends ADOConnection {
 		switch($arr['dialect']) {
 		case '': 
 		case '1': $s = 'Interbase 5.5 or earlier'; break;
-		case '2': $s = 'Interbase 5.6'; break;
+		case '2': $s = 'Interbase 5.6'; break;		
 		case '3': $s = 'Interbase 6.0'; break;
-		
-		default:
-			$s = 'Interbase 6.0';
+		default:$s = 'Interbase 6.0'; break;
 		}
 		$arr['version'] = ADOConnection::_findvers($s);
 		$arr['description'] = $s;
@@ -697,9 +695,9 @@ class ADODB_ibase extends ADOConnection {
 class ADORecordset_ibase extends ADORecordSet
 {
 
-	public $databaseType = "ibase";
-	public $bind=false;
-	public $_cacheType;
+	var $databaseType = "ibase";
+	var $bind=false;
+	var $_cacheType;
 	
 	function ADORecordset_ibase($id,$mode=false)
 	{

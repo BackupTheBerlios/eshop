@@ -19,14 +19,14 @@ if (!defined('_ADODB_ODBC_LAYER')) {
  	define('_ADODB_ACCESS',1);
 
 class  ADODB_access extends ADODB_odbc {	
-	public $databaseType = 'access';
-	public $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
-	public $fmtDate = "#Y-m-d#";
-	public $fmtTimeStamp = "#Y-m-d h:i:sA#"; // note not comma
-	public $_bindInputArray = false; // strangely enough, setting to true does not work reliably
-	public $sysDate = "FORMAT(NOW,'yyyy-mm-dd')";
-	public $sysTimeStamp = 'NOW';
-	public $hasTransactions = false;
+	var $databaseType = 'access';
+	var $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
+	var $fmtDate = "#Y-m-d#";
+	var $fmtTimeStamp = "#Y-m-d h:i:sA#"; // note not comma
+	var $_bindInputArray = false; // strangely enough, setting to true does not work reliably
+	var $sysDate = "FORMAT(NOW,'yyyy-mm-dd')";
+	var $sysTimeStamp = 'NOW';
+	var $hasTransactions = false;
 	
 	function ADODB_access()
 	{
@@ -75,7 +75,7 @@ class  ADODB_access extends ADODB_odbc {
  
 class  ADORecordSet_access extends ADORecordSet_odbc {	
 	
-	public $databaseType = "access";		
+	var $databaseType = "access";		
 	
 	function ADORecordSet_access($id,$mode=false)
 	{

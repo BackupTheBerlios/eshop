@@ -19,13 +19,13 @@ if (!defined('ADODB_DIR')) die();
 include_once(ADODB_DIR.'/drivers/adodb-informix72.inc.php');
 
 class ADODB_informix extends ADODB_informix72 {
-	public $databaseType = "informix";
-	public $hasTop = 'FIRST';
-	public $ansiOuter = true;
+	var $databaseType = "informix";
+	var $hasTop = 'FIRST';
+	var $ansiOuter = true;
 }
 
 class ADORecordset_informix extends ADORecordset_informix72 {
-	public $databaseType = "informix";
+	var $databaseType = "informix";
 	function ADORecordset_informix($id,$mode=false)
 	{
 		$this->ADORecordset_informix72($id,$mode);

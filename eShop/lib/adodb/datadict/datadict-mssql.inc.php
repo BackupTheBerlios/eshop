@@ -14,9 +14,9 @@
 if (!defined('ADODB_DIR')) die();
 
 class ADODB2_mssql extends ADODB_DataDict {
-	public $databaseType = 'mssql';
+	var $databaseType = 'mssql';
 	
-	public $dropIndex = 'DROP INDEX %2$s.%1$s';
+	var $dropIndex = 'DROP INDEX %2$s.%1$s';
 	
 	function MetaType($t,$len=-1,$fieldobj=false)
 	{

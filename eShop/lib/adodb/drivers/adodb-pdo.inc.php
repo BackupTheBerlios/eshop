@@ -18,19 +18,19 @@ if (!defined('ADODB_DIR')) die();
 
 
 class ADODB_pdo extends ADOConnection {
-	public $databaseType = "pdo";	
-	public $dataProvider = "pdo";
-	public $fmtDate = "'Y-m-d'";
-	public $fmtTimeStamp = "'Y-m-d, h:i:sA'";
-	public $replaceQuote = "''"; // string to use to replace quotes
-	public $hasAffectedRows = true;
-	public $_bindInputArray = true;	
-	public $_genSeqSQL = "create table %s (id integer)";
-	public $_autocommit = true;
-	public $_haserrorfunctions = true;
-	public $_lastAffectedRows = 0;
+	var $databaseType = "pdo";	
+	var $dataProvider = "pdo";
+	var $fmtDate = "'Y-m-d'";
+	var $fmtTimeStamp = "'Y-m-d, h:i:sA'";
+	var $replaceQuote = "''"; // string to use to replace quotes
+	var $hasAffectedRows = true;
+	var $_bindInputArray = true;	
+	var $_genSeqSQL = "create table %s (id integer)";
+	var $_autocommit = true;
+	var $_haserrorfunctions = true;
+	var $_lastAffectedRows = 0;
 	
-	public $stmt = false;
+	var $stmt = false;
 	
 	function ADODB_pdo() 
 	{
@@ -175,10 +175,10 @@ class ADODB_pdo extends ADOConnection {
 
 class ADOPDOStatement {
 
-	public $databaseType = "pdo";		
-	public $dataProvider = "pdo";
-	public $_stmt;
-	public $_connectionID;
+	var $databaseType = "pdo";		
+	var $dataProvider = "pdo";
+	var $_stmt;
+	var $_connectionID;
 	
 	function ADOPDOStatement($stmt,$connection)
 	{
@@ -230,9 +230,9 @@ class ADOPDOStatement {
 
 class ADORecordSet_pdo extends ADORecordSet {	
 	
-	public $bind = false;
-	public $databaseType = "pdo";		
-	public $dataProvider = "pdo";
+	var $bind = false;
+	var $databaseType = "pdo";		
+	var $dataProvider = "pdo";
 	
 	function ADORecordSet_pdo($id,$mode=false)
 	{

@@ -20,19 +20,19 @@ if (!defined('_ADODB_ODBC_LAYER')) {
 if (!defined('ADODB_VFP')){
 define('ADODB_VFP',1);
 class ADODB_vfp extends ADODB_odbc {
-	public $databaseType = "vfp";	
-	public $fmtDate = "{^Y-m-d}";
-	public $fmtTimeStamp = "{^Y-m-d, h:i:sA}";
-	public $replaceQuote = "'+chr(39)+'" ;
-	public $true = '.T.';
-	public $false = '.F.';
-	public $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
-	public $_bindInputArray = false; // strangely enough, setting to true does not work reliably
-	public $sysTimeStamp = 'datetime()';
-	public $sysDate = 'date()';
-	public $ansiOuter = true;
-	public $hasTransactions = false;
-	public $curmode = SQL_CUR_USE_ODBC ; // See sqlext.h, SQL_CUR_DEFAULT == SQL_CUR_USE_DRIVER == 2L
+	var $databaseType = "vfp";	
+	var $fmtDate = "{^Y-m-d}";
+	var $fmtTimeStamp = "{^Y-m-d, h:i:sA}";
+	var $replaceQuote = "'+chr(39)+'" ;
+	var $true = '.T.';
+	var $false = '.F.';
+	var $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
+	var $_bindInputArray = false; // strangely enough, setting to true does not work reliably
+	var $sysTimeStamp = 'datetime()';
+	var $sysDate = 'date()';
+	var $ansiOuter = true;
+	var $hasTransactions = false;
+	var $curmode = SQL_CUR_USE_ODBC ; // See sqlext.h, SQL_CUR_DEFAULT == SQL_CUR_USE_DRIVER == 2L
 	
 	function ADODB_vfp()
 	{
@@ -68,7 +68,7 @@ class ADODB_vfp extends ADODB_odbc {
 
 class  ADORecordSet_vfp extends ADORecordSet_odbc {	
 	
-	public $databaseType = "vfp";		
+	var $databaseType = "vfp";		
 
 	
 	function ADORecordSet_vfp($id,$mode=false)

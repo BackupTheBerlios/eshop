@@ -92,17 +92,17 @@ if (!defined('ADODB_DB2')){
 define('ADODB_DB2',1);
 
 class ADODB_DB2 extends ADODB_odbc {
-	public $databaseType = "db2";	
-	public $concat_operator = '||';
-	public $sysDate = 'CURRENT_DATE';
-	public $sysTimeStamp = 'CURRENT TIMESTAMP';
+	var $databaseType = "db2";	
+	var $concat_operator = '||';
+	var $sysDate = 'CURRENT_DATE';
+	var $sysTimeStamp = 'CURRENT TIMESTAMP';
 	// The complete string representation of a timestamp has the form 
 	// yyyy-mm-dd-hh.mm.ss.nnnnnn.
-	public $fmtTimeStamp = "'Y-m-d-H.i.s'";
-	public $ansiOuter = true;
-	public $identitySQL = 'values IDENTITY_VAL_LOCAL()';
-	public $_bindInputArray = true;
-	 public $hasInsertID = true;
+	var $fmtTimeStamp = "'Y-m-d-H.i.s'";
+	var $ansiOuter = true;
+	var $identitySQL = 'values IDENTITY_VAL_LOCAL()';
+	var $_bindInputArray = true;
+	 var $hasInsertID = true;
 	
 	function ADODB_DB2()
 	{
@@ -255,7 +255,7 @@ class ADODB_DB2 extends ADODB_odbc {
 
 class  ADORecordSet_db2 extends ADORecordSet_odbc {	
 	
-	public $databaseType = "db2";		
+	var $databaseType = "db2";		
 	
 	function ADORecordSet_db2($id,$mode=false)
 	{

@@ -17,11 +17,11 @@ if (!defined('ADODB_DIR')) die();
 
 class perf_oci8 extends ADODB_perf{
 	
-	public $tablesSQL = "select segment_name as \"tablename\", sum(bytes)/1024 as \"size_in_k\",tablespace_name as \"tablespace\",count(*) \"extents\" from sys.user_extents 
+	var $tablesSQL = "select segment_name as \"tablename\", sum(bytes)/1024 as \"size_in_k\",tablespace_name as \"tablespace\",count(*) \"extents\" from sys.user_extents 
 	   group by segment_name,tablespace_name";
 	 
-	public $version;
-	public $createTableSQL = "CREATE TABLE adodb_logsql (
+	var $version;
+	var $createTableSQL = "CREATE TABLE adodb_logsql (
 		  created date NOT NULL,
 		  sql0 varchar(250) NOT NULL,
 		  sql1 varchar(4000) NOT NULL,
@@ -30,7 +30,7 @@ class perf_oci8 extends ADODB_perf{
 		  timer decimal(16,6) NOT NULL
 		)";
 	
-	public $settings = array(
+	var $settings = array(
 	'Ratios',
 		'data cache hit ratio' => array('RATIOH',
 			"select round((1-(phy.value / (cur.value + con.value)))*100,2) 

@@ -18,8 +18,8 @@ if (!defined('ADODB_DIR')) die();
 include_once(ADODB_DIR.'/drivers/adodb-oci8.inc.php');
 
 class ADODB_oci805 extends ADODB_oci8 {
-	public $databaseType = "oci805";	
-	public $connectSID = true;
+	var $databaseType = "oci805";	
+	var $connectSID = true;
 	
 	function ADODB_oci805() 
 	{
@@ -50,7 +50,7 @@ class ADODB_oci805 extends ADODB_oci8 {
 }
 
 class ADORecordset_oci805 extends ADORecordset_oci8 {	
-	public $databaseType = "oci805";
+	var $databaseType = "oci805";
 	function ADORecordset_oci805($id,$mode=false)
 	{
 		$this->ADORecordset_oci8($id,$mode);

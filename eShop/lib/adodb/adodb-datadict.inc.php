@@ -159,19 +159,19 @@ function Lens_ParseArgs($args,$endstmtchar=',',$tokenchars='_.-')
 
 
 class ADODB_DataDict {
-	public $connection;
-	public $debug = false;
-	public $dropTable = 'DROP TABLE %s';
-	public $dropIndex = 'DROP INDEX %s';
-	public $addCol = ' ADD';
-	public $alterCol = ' ALTER COLUMN';
-	public $dropCol = ' DROP COLUMN';
-	public $nameRegex = '\w';
-	public $schema = false;
-	public $serverInfo = array();
-	public $autoIncrement = false;
-	public $dataProvider;
-	public $blobSize = 100; 	/// any varchar/char field this size or greater is treated as a blob
+	var $connection;
+	var $debug = false;
+	var $dropTable = 'DROP TABLE %s';
+	var $dropIndex = 'DROP INDEX %s';
+	var $addCol = ' ADD';
+	var $alterCol = ' ALTER COLUMN';
+	var $dropCol = ' DROP COLUMN';
+	var $nameRegex = '\w';
+	var $schema = false;
+	var $serverInfo = array();
+	var $autoIncrement = false;
+	var $dataProvider;
+	var $blobSize = 100; 	/// any varchar/char field this size or greater is treated as a blob
 							/// in other words, we use a text area for editting.
 	
 	function GetCommentSQL($table,$col)
