@@ -8,7 +8,7 @@
 		<meta http-equiv="content-style-type" content="text/css" />
 		<meta content="{$description}" name="description" />
 		<meta content="{$keywords}" name="keywords" />
-		<meta content="Thierry Prêtre / Raphaël Emourgeon / Christian KAKESA" name="author" />           
+		<meta content="Thierry Prêtre / Raphaël Emourgeon / Christian Kakesa" name="author" />           
 		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/{$css}.css" />
 		<link rel="alternate stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />
 		<link rel="alternate stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
@@ -88,7 +88,7 @@
 	  		{/if}
 		</div> 
 		<div id="footer">
-			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Auteurs : Raphaël Emourgeon, Prêtre Thierry & Christian KAKESA{if $benchmark_activation eq "on"} - Exec. time : {$benchmark}{/if}</span>
+			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Auteurs : Raphaël Emourgeon, Prêtre Thierry & Christian Kakesa {if $benchmark_activation eq "on"} - Exec. time : {$benchmark}{/if}</span>
 		</div>
 	</div>
 	</body>
