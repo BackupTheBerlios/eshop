@@ -4,7 +4,6 @@
  *	project		: E-shop
  *	created	: 11,08,2004
  *	author		: Thierry Prêtre, Raphaël Emourgeon & Christian KAKESA
- * DOTO		: icones and tittle images and beta tester? LOOOOOOOOL
  * ----------------------------------------------------
  */
  
@@ -67,7 +66,9 @@ li {
 	width: 780px;
 	padding: 3px;
 	height:100px;
-	background-image: url("../images/blue/shop.jpg");
+	background-color: #999999;
+	background-image: url("../images/silver/shop.jpg");
+	background-repeat: no-repeat;
 }
 
 #head_menu {
@@ -208,15 +209,15 @@ li {
 
 
 #menu a:link{
-	color: #336;
+	color: #6B6B6B;
 	text-decoration:none;
 }
 
 #menu a:hover{
 	padding:0px;
-	color: #336;
+	color: #6B6B6B;
 	text-decoration:none;
-	border-bottom:solid 1px #22a;
+	border-bottom:solid 1px #999999;
 }
 #menu a:activ{
 	font-weight: bold;
@@ -541,19 +542,19 @@ div.frontpage h2
  * ---------------------------------------------------*/
 
 #addbutton{
-	background-image: url("../images/blue/cart.png");
+	background-image: url("../images/silver/cart.png");
 	width: 110px;
 	height: 24px;
 }
 
 #editbutton{
-	background-image: url("../images/blue/edit.png");
+	background-image: url("../images/silver/edit.png");
 	width: 110px;
 	height: 24px;
 }
 
 #orderbutton{
-	background-image: url("../images/blue/order.png");
+	background-image: url("../images/silver/order.png");
 	width: 110px;
 	height: 24px;
 }
