@@ -16,9 +16,9 @@ $company_mail = 'contact@obios.fr';
 $company_telephone = '0160065025';
 $company_contact = 'Christian KAKESA';
 $company_copyright = 'OBIOS S.A.R.L.';
-$editorial = '';
-$editorial_title = '';
-$editorial_text = '';
+$editorial = 'on';
+$editorial_title = 'yes editorial';
+$editorial_text = 'alors editorial...';
 $benchmark_activation = 'on';
-$currency = '€';
+$currency = '&euro;';
 ?>
