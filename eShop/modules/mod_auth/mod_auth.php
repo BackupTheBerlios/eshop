@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_auth.php,v 1.6 2004/08/16 20:36:45 setcode Exp $
+* $Id: mod_auth.php,v 1.7 2004/08/18 02:38:18 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -41,7 +41,7 @@ switch($_REQUEST["action"])
 		
 		// loading the data from the Db
 
-		$query = "SELECT * FROM ".$db_prefix."_users WHERE us_login='".$_REQUEST["user_login"]."' AND us_password='".md5($_REQUEST["user_pwd"])."' AND us_activated='1'";
+		$query = "SELECT us.*, co.co_name FROM ".$db_prefix."_users us, ".$db_prefix."_countries co WHERE us_login='".$_REQUEST["user_login"]."' AND us_password='".md5($_REQUEST["user_pwd"])."' AND us_activated='1' AND us.us_country=co.co_id";
 			
 		$resultat = &$connexion->Execute($query);
 		
@@ -61,6 +61,15 @@ switch($_REQUEST["action"])
 			$session->register("login", $resultat->fields["us_login"]);
 			$session->register("level", $resultat->fields["us_level"]);
 			$session->register("id", $resultat->fields["us_id"]);
+			//get all user info for estimate or other mods
+			$session->register("us_company", $resultat->fields["us_company"]);
+			$session->register("us_first_name", $resultat->fields["us_first_name"]);
+			$session->register("us_name", $resultat->fields["us_name"]);
+			$session->register("us_address", $resultat->fields["us_address"]);
+			$session->register("us_NPA", $resultat->fields["us_NPA"]);
+			$session->register("us_city", $resultat->fields["us_city"]);
+			$session->register("us_country", $resultat->fields["co_name"]);
+			$session->register("us_email", $resultat->fields["us_email"]);
 			
 			// updating lastlog and lastip :)
 				

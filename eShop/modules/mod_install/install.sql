@@ -377,6 +377,14 @@ CREATE TABLE `prefix_estimate` (
   `est_date` date NOT NULL default '0000-00-00',
   `est_ttc_price` float(10,2) NOT NULL default '0.00',
   `est_status` int(1) NOT NULL default '0',
+  `us_company` varchar(50) default NULL,
+  `us_first_name` varchar(50) default NULL,
+  `us_name` varchar(50) default NULL,
+  `us_address` varchar(100) default NULL,
+  `us_NPA` varchar(10) default NULL,
+  `us_city` varchar(50) default NULL,
+  `us_country` varchar(32) default NULL,
+  `us_email` varchar(50) default NULL,
   PRIMARY KEY  (`est_id`),
   KEY `est_id` (`est_id`,`est_num`),
   KEY `est_user_id_FK` (`est_user_id_FK`)
@@ -415,3 +423,4 @@ CREATE TABLE `prefix_active_mod` (
   PRIMARY KEY  (`am_id`),
   KEY `am_name` (`am_name`)
 ) TYPE=MyISAM;
+INSERT INTO `prefix_active_mod` VALUES (1, 'estimate', 1);

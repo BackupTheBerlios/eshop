@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre, R. Emourgeon & Christian KAKESA
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_estimate.php,v 1.5 2004/08/17 01:05:02 setcode Exp $
+* $Id: mod_estimate.php,v 1.6 2004/08/18 02:38:16 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -38,7 +38,7 @@ else
 	{
 		case "confirm" :
 			//insert data to table est_estimate
-			$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .", '')";
+			$query = "INSERT INTO ".$GLOBALS["db_prefix"]."_estimate VALUES ('', '', ".$_SESSION["id"].", NOW(), ". $_POST["ttc"] .", 0, '".$_SESSION['us_company']."', '".$_SESSION['us_first_name']."', '".$_SESSION['us_name']."', '".$_SESSION['us_address']."', '".$_SESSION['us_NPA']."', '".$_SESSION['us_city']."', '".$_SESSION['us_country']."', '".$_SESSION['us_email']."')";
 			if(!$resultat = &$connexion->Execute($query))
 				echo $connexion->ErrorMsg();
 			$est_id = mysql_insert_id();
@@ -76,6 +76,17 @@ else
 			break;
 			
 		case "user_estimate":
+			$query = "SELECT est.est_num, est.est_ttc_price, est.est_date  FROM ".$GLOBALS["db_prefix"]."_estimate est WHERE  est.est_status < 3 AND est. est_user_id_FK =". $_SESSION['id'] ." ORDER BY est.est_date DESC, est.est_num DESC";
+			if(!$resultat = &$connexion->Execute($query))
+				echo $connexion->ErrorMsg();
+			$encours = $resultat->GetArray();
+			$query = "SELECT est.est_num, est.est_ttc_price, est.est_date  FROM ".$GLOBALS["db_prefix"]."_estimate est WHERE  est.est_status = 3 AND est. est_user_id_FK=". $_SESSION['id'] ." ORDER BY est.est_date DESC, est.est_num DESC";
+			if(!$resultat = &$connexion->Execute($query))
+				echo $connexion->ErrorMsg();
+			$traite = $resultat->GetArray();
+			
+			$template->assign("encours", $encours);
+			$template->assign("traite", $traite);		
 			$template->assign("template", "user_estimate");
 			break;
 			

@@ -45,21 +45,21 @@
 <tr>
     <td style="text-align: center;">{$values[items][0]}</td>
     <td>{$values[items][1]}</td>
-    <td style="text-align: right;">{$values[items][2]|number_format:2:",":" "} {$currency}</td>
+    <td style="text-align: right;">{$values[items][2]|number_format:2:".":""} {$currency}</td>
     <td style="text-align: center;">{$values[items][3]}</td>
-    <td style="text-align: right;">{$values[items][4]|number_format:2:",":" "} {$currency}</td>
+    <td style="text-align: right;">{$values[items][4]|number_format:2:".":""} {$currency}</td>
 </tr>
 {assign var="totalTtc" value="`$totalTtc+$values[items][4]`"}
  {/section}
 <tr>
 	<td colspan="3" style="text-align: center;background-color: transparent;border-style: solid;border-color: #000000;border-width: 1px 0px 0px 0px;">&nbsp;</td>
 	<td style="text-align: left;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 0px 1px 1px;"><strong>Total (HT)</strong></td>
-	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc/1.196|string_format:"%.2f"} {$currency}</td>
+	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc/1.196|number_format:2:".":" "} {$currency}</td>
 </tr>
 <tr>
 	<td colspan="3" style="text-align: center;background-color: transparent;border-style: solid;border-color: #000000;border-width: 0px 0px 0px 0px;">&nbsp;</td>
 	<td style="text-align: left;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 0px 1px 1px;"><strong>Total (TTC)</strong></td>
-	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc|number_format:2:",":" "} {$currency}</td>
+	<td style="text-align: right;background-color: #999999;border-style: solid;border-color: #000000;border-width: 1px 1px 1px 1px;">{$totalTtc|number_format:2:".":""} {$currency}</td>
 </tr>
 <tr>
 	<td colspan="5">&nbsp;</td>
@@ -69,7 +69,7 @@
 	<td>
 		<form action="index.php?module=mod_estimate" method="post">
 			<input type="text" name="action" value="confirm" size="40" maxlength="40" style="display: none;"/>
-			<input type="text" name="ttc" value="{$totalTtc|number_format:2:",":" "}" size="40" maxlength="40" style="display: none;"/>
+			<input type="text" name="ttc" value="{$totalTtc}" size="40" maxlength="40" style="display: none;"/>
 			<input type="submit" value="Valider" class="submit" />
 		</form>
 	</td>	
