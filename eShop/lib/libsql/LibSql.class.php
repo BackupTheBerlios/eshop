@@ -24,7 +24,7 @@
  * @version 0.0.1b
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  *
- * $Id: LibSql.class.php,v 1.2 2004/08/20 05:20:16 setcode Exp $
+ * $Id: LibSql.class.php,v 1.3 2004/08/26 23:05:13 setcode Exp $
  */
 
 /**
@@ -111,7 +111,7 @@ class LibSql
     	}
     	else
     	{
-    		return false;
+    		return $number;
     	}
 	}
 }
