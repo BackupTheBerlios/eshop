@@ -1,6 +1,6 @@
 <?php
 /** 
- * @version V4.00 20 Oct 2003 (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+ * @version V4.50 6 July 2004 (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
  * Released under both BSD license and Lesser GPL library license. 
  * Whenever there is any discrepancy between the two licenses, 
  * the BSD license will take precedence. 
@@ -27,6 +27,12 @@
 	quote
 	nextID
 	disconnect
+	
+	getOne
+	getAssoc
+	getRow
+	getCol
+	getAll
 	
  DB_Result
  ---------
@@ -175,7 +181,7 @@ class DB
 		if($persist) $ok = $obj->PConnect($dsninfo['hostspec'], $dsninfo['username'],$dsninfo['password'],$dsninfo['database']);
 		else  $ok = $obj->Connect($dsninfo['hostspec'], $dsninfo['username'],$dsninfo['password'],$dsninfo['database']);
 		
-		if (!$ok) return ADODB_PEAR_Error();
+		if (!$ok) $obj = ADODB_PEAR_Error();
 		return $obj;
 	}
 

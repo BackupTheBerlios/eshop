@@ -1,16 +1,19 @@
 <?php
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. 
 Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
   MSSQL support via ODBC. Requires ODBC. Works on Windows and Unix. 
   For Unix configuration, see http://phpbuilder.com/columns/alberto20000919.php3
 */
+
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
 
 if (!defined('_ADODB_ODBC_LAYER')) {
 	include(ADODB_DIR."/drivers/adodb-odbc.inc.php");
@@ -18,23 +21,23 @@ if (!defined('_ADODB_ODBC_LAYER')) {
 
  
 class  ADODB_odbc_mssql extends ADODB_odbc {	
-	var $databaseType = 'odbc_mssql';
-	var $fmtDate = "'Y-m-d'";
-	var $fmtTimeStamp = "'Y-m-d h:i:sA'";
-	var $_bindInputArray = true;
-	var $metaTablesSQL="select name,case when type='U' then 'T' else 'V' end from sysobjects where (type='U' or type='V') and (name not in ('sysallocations','syscolumns','syscomments','sysdepends','sysfilegroups','sysfiles','sysfiles1','sysforeignkeys','sysfulltextcatalogs','sysindexes','sysindexkeys','sysmembers','sysobjects','syspermissions','sysprotects','sysreferences','systypes','sysusers','sysalternates','sysconstraints','syssegments','REFERENTIAL_CONSTRAINTS','CHECK_CONSTRAINTS','CONSTRAINT_TABLE_USAGE','CONSTRAINT_COLUMN_USAGE','VIEWS','VIEW_TABLE_USAGE','VIEW_COLUMN_USAGE','SCHEMATA','TABLES','TABLE_CONSTRAINTS','TABLE_PRIVILEGES','COLUMNS','COLUMN_DOMAIN_USAGE','COLUMN_PRIVILEGES','DOMAINS','DOMAIN_CONSTRAINTS','KEY_COLUMN_USAGE'))";
-	var $metaColumnsSQL = "select c.name,t.name,c.length from syscolumns c join systypes t on t.xusertype=c.xusertype join sysobjects o on o.id=c.id where o.name='%s'";
-	var $hasTop = 'top';		// support mssql/interbase SELECT TOP 10 * FROM TABLE
-	var $sysDate = 'GetDate()';
-	var $sysTimeStamp = 'GetDate()';
-	var $leftOuter = '*=';
-	var $rightOuter = '=*';
-	var $upperCase = 'upper';
-	var $substr = 'substring';
-	var $ansiOuter = true; // for mssql7 or later
-	var $identitySQL = 'select @@IDENTITY'; // 'select SCOPE_IDENTITY'; # for mssql 2000
-	var $hasInsertID = true;
-	var $connectStmt = 'SET CONCAT_NULL_YIELDS_NULL OFF'; # When SET CONCAT_NULL_YIELDS_NULL is ON, 
+	public $databaseType = 'odbc_mssql';
+	public $fmtDate = "'Y-m-d'";
+	public $fmtTimeStamp = "'Y-m-d h:i:sA'";
+	public $_bindInputArray = true;
+	public $metaTablesSQL="select name,case when type='U' then 'T' else 'V' end from sysobjects where (type='U' or type='V') and (name not in ('sysallocations','syscolumns','syscomments','sysdepends','sysfilegroups','sysfiles','sysfiles1','sysforeignkeys','sysfulltextcatalogs','sysindexes','sysindexkeys','sysmembers','sysobjects','syspermissions','sysprotects','sysreferences','systypes','sysusers','sysalternates','sysconstraints','syssegments','REFERENTIAL_CONSTRAINTS','CHECK_CONSTRAINTS','CONSTRAINT_TABLE_USAGE','CONSTRAINT_COLUMN_USAGE','VIEWS','VIEW_TABLE_USAGE','VIEW_COLUMN_USAGE','SCHEMATA','TABLES','TABLE_CONSTRAINTS','TABLE_PRIVILEGES','COLUMNS','COLUMN_DOMAIN_USAGE','COLUMN_PRIVILEGES','DOMAINS','DOMAIN_CONSTRAINTS','KEY_COLUMN_USAGE'))";
+	public $metaColumnsSQL = "select c.name,t.name,c.length from syscolumns c join systypes t on t.xusertype=c.xusertype join sysobjects o on o.id=c.id where o.name='%s'";
+	public $hasTop = 'top';		// support mssql/interbase SELECT TOP 10 * FROM TABLE
+	public $sysDate = 'GetDate()';
+	public $sysTimeStamp = 'GetDate()';
+	public $leftOuter = '*=';
+	public $rightOuter = '=*';
+	public $substr = 'substring';
+	public $length = 'len';
+	public $ansiOuter = true; // for mssql7 or later
+	public $identitySQL = 'select @@IDENTITY'; // 'select SCOPE_IDENTITY'; # for mssql 2000
+	public $hasInsertID = true;
+	public $connectStmt = 'SET CONCAT_NULL_YIELDS_NULL OFF'; # When SET CONCAT_NULL_YIELDS_NULL is ON, 
 														  # concatenating a null value with a string yields a NULL result
 	
 	function ADODB_odbc_mssql()
@@ -142,12 +145,23 @@ order by constraint_name, referenced_table_name, keyno";
 	// tested with MSSQL 2000
 	function &MetaPrimaryKeys($table)
 	{
-		$sql = "select k.column_name from information_schema.key_column_usage k,
+	global $ADODB_FETCH_MODE;
+	
+		$schema = '';
+		$this->_findschema($table,$schema);
+		//if (!$schema) $schema = $this->database;
+		if ($schema) $schema = "and k.table_catalog like '$schema%'"; 
+	
+		$sql = "select distinct k.column_name,ordinal_position from information_schema.key_column_usage k,
 		information_schema.table_constraints tc 
 		where tc.constraint_name = k.constraint_name and tc.constraint_type =
-		'PRIMARY KEY' and k.table_name = '$table'";
+		'PRIMARY KEY' and k.table_name = '$table' $schema order by ordinal_position ";
 		
+		$savem = $ADODB_FETCH_MODE;
+		$ADODB_FETCH_MODE = ADODB_FETCH_ASSOC;
 		$a = $this->GetCol($sql);
+		$ADODB_FETCH_MODE = $savem;
+		
 		if ($a && sizeof($a)>0) return $a;
 		return false;	  
 	}
@@ -157,9 +171,11 @@ order by constraint_name, referenced_table_name, keyno";
 		if ($nrows > 0 && $offset <= 0) {
 			$sql = preg_replace(
 				'/(^\s*select\s+(distinctrow|distinct)?)/i','\\1 '.$this->hasTop." $nrows ",$sql);
-			return $this->Execute($sql,$inputarr);
+			$rs =& $this->Execute($sql,$inputarr);
 		} else
-			return ADOConnection::SelectLimit($sql,$nrows,$offset,$inputarr,$secs2cache);
+			$rs =& ADOConnection::SelectLimit($sql,$nrows,$offset,$inputarr,$secs2cache);
+			
+		return $rs;
 	}
 	
 	// Format date column in sql string given an input format that understands Y M D
@@ -226,7 +242,7 @@ order by constraint_name, referenced_table_name, keyno";
  
 class  ADORecordSet_odbc_mssql extends ADORecordSet_odbc {	
 	
-	var $databaseType = 'odbc_mssql';
+	public $databaseType = 'odbc_mssql';
 	
 	function ADORecordSet_odbc_mssql($id,$mode=false)
 	{

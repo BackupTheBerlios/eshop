@@ -1,20 +1,26 @@
 <?php
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. 
 Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
 
 */
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
 
 include_once(ADODB_DIR."/drivers/adodb-ibase.inc.php");
 
 class ADODB_firebird extends ADODB_ibase {
-	var $databaseType = "firebird";	
+	public $databaseType = "firebird";	
+	public $dialect = 3;
+	
+	public $sysTimeStamp = "cast('NOW' as timestamp)";
+	
 	function ADODB_firebird()
 	{	
 		$this->ADODB_ibase();
@@ -28,6 +34,9 @@ class ADODB_firebird extends ADODB_ibase {
 		case '1': $s = 'Firebird Dialect 1'; break;
 		case '2': $s = 'Firebird Dialect 2'; break;
 		case '3': $s = 'Firebird Dialect 3'; break;
+		
+		default:
+			$s = 'Firebird Dialect 3';
 		}
 		$arr['version'] = ADOConnection::_findvers($s);
 		$arr['description'] = $s;
@@ -44,10 +53,12 @@ class ADODB_firebird extends ADODB_ibase {
 		$str .=($offset>=0) ? "SKIP $offset " : '';
 		
 		$sql = preg_replace('/^[ \t]*select/i',$str,$sql); 
-		return ($secs) ? 
-				$this->CacheExecute($secs,$sql,$inputarr)
-			: 	
-				$this->Execute($sql,$inputarr);
+		if ($secs)
+			$rs =& $this->CacheExecute($secs,$sql,$inputarr);
+		else
+			$rs =& $this->Execute($sql,$inputarr);
+			
+		return $rs;
 	}
 	
 	
@@ -56,7 +67,7 @@ class ADODB_firebird extends ADODB_ibase {
 
 class  ADORecordSet_firebird extends ADORecordSet_ibase {	
 	
-	var $databaseType = "firebird";		
+	public $databaseType = "firebird";		
 	
 	function ADORecordSet_firebird($id,$mode=false)
 	{

@@ -1,6 +1,6 @@
 <?php
 /*
- @version V4.00 20 Oct 2003 (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+ @version V4.50 6 July 2004 (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
  Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. 
@@ -8,17 +8,20 @@
   Set tabs to 8.
 */ 
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+
 if (! defined("_ADODB_FBSQL_LAYER")) {
  define("_ADODB_FBSQL_LAYER", 1 );
 
 class ADODB_fbsql extends ADOConnection {
-	var $databaseType = 'fbsql';
-	var $hasInsertID = true;
-	var $hasAffectedRows = true;	
-	var $metaTablesSQL = "SHOW TABLES";	
-	var $metaColumnsSQL = "SHOW COLUMNS FROM %s";
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $hasLimit = false;
+	public $databaseType = 'fbsql';
+	public $hasInsertID = true;
+	public $hasAffectedRows = true;	
+	public $metaTablesSQL = "SHOW TABLES";	
+	public $metaColumnsSQL = "SHOW COLUMNS FROM %s";
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $hasLimit = false;
 	
 	function ADODB_fbsql() 
 	{			
@@ -156,8 +159,8 @@ class ADODB_fbsql extends ADOConnection {
 
 class ADORecordSet_fbsql extends ADORecordSet{	
 	
-	var $databaseType = "fbsql";
-	var $canSeek = true;
+	public $databaseType = "fbsql";
+	public $canSeek = true;
 	
 	function ADORecordSet_fbsql($queryID,$mode=false) 
 	{
@@ -166,9 +169,10 @@ class ADORecordSet_fbsql extends ADORecordSet{
 			$mode = $ADODB_FETCH_MODE;
 		}
 		switch ($mode) {
-		case ADODB_FETCH_NUM: 			$this->fetchMode = FBSQL_NUM; 			break;
-		case ADODB_FETCH_BOTH:			$this->fetchMode = FBSQL_BOTH; 			break;
-		case ADODB_FETCH_ASSOC: 			$this->fetchMode = FBSQL_ASSOC; 			break;
+		case ADODB_FETCH_NUM: $this->fetchMode = FBSQL_NUM; break;
+		case ADODB_FETCH_BOTH: $this->fetchMode = FBSQL_BOTH; break;
+		case ADODB_FETCH_ASSOC: $this->fetchMode = FBSQL_ASSOC; break;
+		default:$this->fetchMode = FBSQL_BOTH; break;
 		}
 		return $this->ADORecordSet($queryID);
 	}

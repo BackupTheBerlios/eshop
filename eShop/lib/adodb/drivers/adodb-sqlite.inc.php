@@ -1,11 +1,11 @@
 <?php
 /*
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence.
 
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
   SQLite info: http://www.hwaci.com/sw/sqlite/
     
@@ -15,17 +15,21 @@ V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights rese
   2. Rename the file, remove the .txt prefix.
 */
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+
 class ADODB_sqlite extends ADOConnection {
-	var $databaseType = "sqlite";
-	var $replaceQuote = "''"; // string to use to replace quotes
-	var $concat_operator='||';
-	var $_errorNo = 0;
-	var $hasLimit = true;	
-	var $hasInsertID = true; 		/// supports autoincrement ID?
-	var $hasAffectedRows = true; 	/// supports affected rows for update/delete?
-	var $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
-	var $sysDate = "adodb_date('Y-m-d')";
-	var $sysTimeStamp = "adodb_date('Y-m-d H:i:s')";
+	public $databaseType = "sqlite";
+	public $replaceQuote = "''"; // string to use to replace quotes
+	public $concat_operator='||';
+	public $_errorNo = 0;
+	public $hasLimit = true;	
+	public $hasInsertID = true; 		/// supports autoincrement ID?
+	public $hasAffectedRows = true; 	/// supports affected rows for update/delete?
+	public $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
+	public $sysDate = "adodb_date('Y-m-d')";
+	public $sysTimeStamp = "adodb_date('Y-m-d H:i:s')";
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
 	
 	function ADODB_sqlite() 
 	{
@@ -126,6 +130,8 @@ class ADODB_sqlite extends ADOConnection {
 	// returns true or false
 	function _connect($argHostname, $argUsername, $argPassword, $argDatabasename)
 	{
+		if (!function_exists('sqlite_open')) return null;
+		
 		$this->_connectionID = sqlite_open($argHostname);
 		if ($this->_connectionID === false) return false;
 		$this->_createFunctions();
@@ -135,6 +141,8 @@ class ADODB_sqlite extends ADOConnection {
 	// returns true or false
 	function _pconnect($argHostname, $argUsername, $argPassword, $argDatabasename)
 	{
+		if (!function_exists('sqlite_open')) return null;
+		
 		$this->_connectionID = sqlite_popen($argHostname);
 		if ($this->_connectionID === false) return false;
 		$this->_createFunctions();
@@ -156,10 +164,12 @@ class ADODB_sqlite extends ADOConnection {
 	{
 		$offsetStr = ($offset >= 0) ? " OFFSET $offset" : '';
 		$limitStr  = ($nrows >= 0)  ? " LIMIT $nrows" : ($offset >= 0 ? ' LIMIT 999999999' : '');
-	  	return $secs2cache ?
-	   		$this->CacheExecute($secs2cache,$sql."$limitStr$offsetStr",$inputarr)
-	  	:
-	   		$this->Execute($sql."$limitStr$offsetStr",$inputarr);
+	  	if ($secs2cache)
+	   		$rs =& $this->CacheExecute($secs2cache,$sql."$limitStr$offsetStr",$inputarr);
+	  	else
+	   		$rs =& $this->Execute($sql."$limitStr$offsetStr",$inputarr);
+			
+		return $rs;
 	}
 	
 	/*
@@ -168,7 +178,7 @@ class ADODB_sqlite extends ADOConnection {
 		
 		Will return false if unable to generate an ID after $MAXLOOPS attempts.
 	*/
-	var $_genSeqSQL = "create table %s (id integer)";
+	public $_genSeqSQL = "create table %s (id integer)";
 	
 	function GenID($seq='adodbseq',$start=1)
 	{	
@@ -208,7 +218,7 @@ class ADODB_sqlite extends ADOConnection {
 		return $this->Execute("insert into $seqname values($start)");
 	}
 	
-	var $_dropSeqSQL = 'drop table %s';
+	public $_dropSeqSQL = 'drop table %s';
 	function DropSequence($seqname)
 	{
 		if (empty($this->_dropSeqSQL)) return false;
@@ -230,8 +240,8 @@ class ADODB_sqlite extends ADOConnection {
 
 class ADORecordset_sqlite extends ADORecordSet {
 
-	var $databaseType = "sqlite";
-	var $bind = false;
+	public $databaseType = "sqlite";
+	public $bind = false;
 
 	function ADORecordset_sqlite($queryID,$mode=false)
 	{

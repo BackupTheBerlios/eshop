@@ -1,30 +1,32 @@
 <?php
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. See License.txt. 
   Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
   Microsoft Access data driver. Requires ODBC. Works only on MS Windows.
 */
 if (!defined('_ADODB_ODBC_LAYER')) {
+	if (!defined('ADODB_DIR')) die();
+	
 	include(ADODB_DIR."/drivers/adodb-odbc.inc.php");
 }
  if (!defined('_ADODB_ACCESS')) {
  	define('_ADODB_ACCESS',1);
-	
+
 class  ADODB_access extends ADODB_odbc {	
-	var $databaseType = 'access';
-	var $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
-	var $fmtDate = "#Y-m-d#";
-	var $fmtTimeStamp = "#Y-m-d h:i:sA#"; // note not comma
-	var $_bindInputArray = false; // strangely enough, setting to true does not work reliably
-	var $sysDate = "FORMAT(NOW,'yyyy-mm-dd')";
-	var $sysTimeStamp = 'NOW';
-	var $hasTransactions = false;
+	public $databaseType = 'access';
+	public $hasTop = 'top';		// support mssql SELECT TOP 10 * FROM TABLE
+	public $fmtDate = "#Y-m-d#";
+	public $fmtTimeStamp = "#Y-m-d h:i:sA#"; // note not comma
+	public $_bindInputArray = false; // strangely enough, setting to true does not work reliably
+	public $sysDate = "FORMAT(NOW,'yyyy-mm-dd')";
+	public $sysTimeStamp = 'NOW';
+	public $hasTransactions = false;
 	
 	function ADODB_access()
 	{
@@ -32,6 +34,11 @@ class  ADODB_access extends ADODB_odbc {
 	
 		$ADODB_EXTENSION = false;
 		$this->ADODB_odbc();
+	}
+	
+	function Time()
+	{
+		return time();
 	}
 	
 	function BeginTrans() { return false;}
@@ -68,7 +75,7 @@ class  ADODB_access extends ADODB_odbc {
  
 class  ADORecordSet_access extends ADORecordSet_odbc {	
 	
-	var $databaseType = "access";		
+	public $databaseType = "access";		
 	
 	function ADORecordSet_access($id,$mode=false)
 	{

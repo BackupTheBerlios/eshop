@@ -1,36 +1,41 @@
 <?php
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. 
 Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
 	Microsoft ADO data driver. Requires ADO. Works only on MS Windows.
 */
-  define("_ADODB_ADO_LAYER", 1 );
+
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+	
+define("_ADODB_ADO_LAYER", 1 );
 /*--------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------*/
-  
+
+	
 class ADODB_ado extends ADOConnection {
-	var $databaseType = "ado";	
-	var $_bindInputArray = false;
-	var $fmtDate = "'Y-m-d'";
-	var $fmtTimeStamp = "'Y-m-d, h:i:sA'";
-	var $replaceQuote = "''"; // string to use to replace quotes
-	var $dataProvider = "ado";	
-	var $hasAffectedRows = true;
-	var $adoParameterType = 201; // 201 = long varchar, 203=long wide varchar, 205 = long varbinary
-	var $_affectedRows = false;
-	var $_thisTransactions;
-	var $_cursor_type = 3; // 3=adOpenStatic,0=adOpenForwardOnly,1=adOpenKeyset,2=adOpenDynamic
-	var $_cursor_location = 3; // 2=adUseServer, 3 = adUseClient;
-	var $_lock_type = -1;
-	var $_execute_option = -1;
-	var $poorAffectedRows = true; 
-	var $charPage;
+	public $databaseType = "ado";	
+	public $_bindInputArray = false;
+	public $fmtDate = "'Y-m-d'";
+	public $fmtTimeStamp = "'Y-m-d, h:i:sA'";
+	public $replaceQuote = "''"; // string to use to replace quotes
+	public $dataProvider = "ado";	
+	public $hasAffectedRows = true;
+	public $adoParameterType = 201; // 201 = long varchar, 203=long wide varchar, 205 = long varbinary
+	public $_affectedRows = false;
+	public $_thisTransactions;
+	public $_cursor_type = 3; // 3=adOpenStatic,0=adOpenForwardOnly,1=adOpenKeyset,2=adOpenDynamic
+	public $_cursor_location = 3; // 2=adUseServer, 3 = adUseClient;
+	public $_lock_type = -1;
+	public $_execute_option = -1;
+	public $poorAffectedRows = true; 
+	public $charPage;
 		
 	function ADODB_ado() 
 	{ 	
@@ -45,7 +50,9 @@ class ADODB_ado extends ADOConnection {
 	
 	function _affectedrows()
 	{
-			return $this->_affectedRows->value;
+		if (PHP_VERSION >= 5) return $this->_affectedRows;
+		
+		return $this->_affectedRows->value;
 	}
 	
 	// you can also pass a connection string like this:
@@ -193,6 +200,9 @@ class ADODB_ado extends ADOConnection {
 		return $arr;
 	}
 	
+
+
+	
 	/* returns queryID or false */
 	function &_query($sql,$inputarr=false) 
 	{
@@ -305,13 +315,13 @@ class ADODB_ado extends ADOConnection {
 
 class ADORecordSet_ado extends ADORecordSet {	
 	
-	var $bind = false;
-	var $databaseType = "ado";	
-	var $dataProvider = "ado";	
-	var $_tarr = false; // caches the types
-	var $_flds; // and field objects
-	var $canSeek = true;
-  	var $hideErrors = true;
+	public $bind = false;
+	public $databaseType = "ado";	
+	public $dataProvider = "ado";	
+	public $_tarr = false; // caches the types
+	public $_flds; // and field objects
+	public $canSeek = true;
+  	public $hideErrors = true;
 		  
 	function ADORecordSet_ado($id,$mode=false)
 	{
@@ -540,18 +550,31 @@ class ADORecordSet_ado extends ADORecordSet {
 		
 		if ($this->hideErrors)  $olde = error_reporting(E_ERROR|E_CORE_ERROR);// sometimes $f->value be null
 		for ($i=0,$max = $this->_numOfFields; $i < $max; $i++) {
-
+			//echo "<p>",$t,' ';var_dump($f->value); echo '</p>';
 			switch($t) {
 			case 135: // timestamp
-				$this->fields[] = date('Y-m-d H:i:s',(integer)$f->value);
-				break;
-				
+				if (!strlen((string)$f->value)) $this->fields[] = false;
+				else {
+					if (!is_numeric($f->value)) $val = variant_date_to_timestamp($f->value);
+					else $val = $f->value;
+					$this->fields[] = adodb_date('Y-m-d H:i:s',$val);
+				}
+				break;			
 			case 133:// A date value (yyyymmdd) 
-				$val = $f->value;
-				$this->fields[] = substr($val,0,4).'-'.substr($val,4,2).'-'.substr($val,6,2);
+				if ($val = $f->value) {
+					$this->fields[] = substr($val,0,4).'-'.substr($val,4,2).'-'.substr($val,6,2);
+				} else
+					$this->fields[] = false;
 				break;
 			case 7: // adDate
-				$this->fields[] = date('Y-m-d',(integer)$f->value);
+				if (!strlen((string)$f->value)) $this->fields[] = false;
+				else {
+					if (!is_numeric($f->value)) $val = variant_date_to_timestamp($f->value);
+					else $val = $f->value;
+					
+					if (($val % 86400) == 0) $this->fields[] = adodb_date('Y-m-d',$val);
+					else $this->fields[] = adodb_date('Y-m-d H:i:s',$val);
+				}
 				break;
 			case 1: // null
 				$this->fields[] = false;
@@ -577,7 +600,25 @@ class ADORecordSet_ado extends ADORecordSet {
 		return true;
 	}
 	
-	
+		function NextRecordSet()
+		{
+			$rs = $this->_queryID;
+			$this->_queryID = $rs->NextRecordSet();
+			//$this->_queryID = $this->_QueryId->NextRecordSet();
+			if ($this->_queryID == null) return false;
+			
+			$this->_currentRow = -1;
+			$this->_currentPage = -1;
+			$this->bind = false;
+			$this->fields = false;
+			$this->_flds = false;
+			$this->_tarr = false;
+			
+			$this->_inited = false;
+			$this->Init();
+			return true;
+		}
+
 	function _close() {
 		$this->_flds = false;
 		@$this->_queryID->Close();// by Pete Dishman (peterd@telephonetics.co.uk)

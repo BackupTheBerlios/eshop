@@ -1,15 +1,17 @@
 <?php
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. 
 Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
   Oracle support via ODBC. Requires ODBC. Works on Windows. 
 */
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
 
 if (!defined('_ADODB_ODBC_LAYER')) {
 	include(ADODB_DIR."/drivers/adodb-odbc.inc.php");
@@ -17,17 +19,17 @@ if (!defined('_ADODB_ODBC_LAYER')) {
 
  
 class  ADODB_odbc_oracle extends ADODB_odbc {	
-	var $databaseType = 'odbc_oracle';
- 	var $replaceQuote = "''"; // string to use to replace quotes
-	var $concat_operator='||';
-	var $fmtDate = "'Y-m-d 00:00:00'"; 
-	var $fmtTimeStamp = "'Y-m-d h:i:sA'";
-	var $metaTablesSQL = 'select table_name from cat';
-	var $metaColumnsSQL = "select cname,coltype,width from col where tname='%s' order by colno";
-	var $sysDate = "TRUNC(SYSDATE)";
-	var $sysTimeStamp = 'SYSDATE';
+	public $databaseType = 'odbc_oracle';
+ 	public $replaceQuote = "''"; // string to use to replace quotes
+	public $concat_operator='||';
+	public $fmtDate = "'Y-m-d 00:00:00'"; 
+	public $fmtTimeStamp = "'Y-m-d h:i:sA'";
+	public $metaTablesSQL = 'select table_name from cat';
+	public $metaColumnsSQL = "select cname,coltype,width from col where tname='%s' order by colno";
+	public $sysDate = "TRUNC(SYSDATE)";
+	public $sysTimeStamp = 'SYSDATE';
 	
-	//var $_bindInputArray = false;
+	//public $_bindInputArray = false;
 	
 	function ADODB_odbc_oracle()
 	{
@@ -105,7 +107,7 @@ class  ADODB_odbc_oracle extends ADODB_odbc {
  
 class  ADORecordSet_odbc_oracle extends ADORecordSet_odbc {	
 	
-	var $databaseType = 'odbc_oracle';
+	public $databaseType = 'odbc_oracle';
 	
 	function ADORecordSet_odbc_oracle($id,$mode=false)
 	{

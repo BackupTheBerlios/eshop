@@ -1,12 +1,12 @@
 <?php
 /*
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim. All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim. All rights reserved.
   Released under both BSD license and Lesser GPL library license.
   Whenever there is any discrepancy between the two licenses,
   the BSD license will take precedence.
   Set tabs to 4 for best viewing.
 
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
 
   Informix port by Mitchell T. Young (mitch@youngfamily.org)
 
@@ -14,32 +14,45 @@ V4.00 20 Oct 2003  (c) 2000-2003 John Lim. All rights reserved.
 
 */
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+
+if (!defined('IFX_SCROLL')) define('IFX_SCROLL',1);
+
 class ADODB_informix72 extends ADOConnection {
-	var $databaseType = "informix72";
-	var $dataProvider = "informix";
-	var $replaceQuote = "''"; // string to use to replace quotes
-	var $fmtDate = "'Y-m-d'";
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $hasInsertID = true;
-	var $hasAffectedRows = true;
-	var $upperCase = 'upper';
-    var $substr = 'substr';
-	var $metaTablesSQL="select tabname from systables";
-	var $metaColumnsSQL = 
-"select c.colname, c.coltype, c.collength, d.default 
-	from syscolumns c, systables t,sysdefaults d 
-	where c.tabid=t.tabid and d.tabid=t.tabid and d.colno=c.colno and tabname='%s'";
+	public $databaseType = "informix72";
+	public $dataProvider = "informix";
+	public $replaceQuote = "''"; // string to use to replace quotes
+	public $fmtDate = "'Y-m-d'";
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $hasInsertID = true;
+	public $hasAffectedRows = true;
+    public $substr = 'substr';
+	public $metaTablesSQL="select tabname from systables where tabtype!=' ' and owner!='informix'"; //Don't get informix tables and pseudo-tables
 
-//	var $metaColumnsSQL = "select colname, coltype, collength from syscolumns c, systables t where c.tabid=t.tabid and tabname='%s'";
-	var $concat_operator = '||';
 
-	var $lastQuery = false;
-	var $has_insertid = true;
+	public $metaColumnsSQL = 
+		"select c.colname, c.coltype, c.collength, d.default,c.colno
+		from syscolumns c, systables t,outer sysdefaults d
+		where c.tabid=t.tabid and d.tabid=t.tabid and d.colno=c.colno
+		and tabname='%s' order by c.colno";
 
-	var $_autocommit = true;
-	var $_bindInputArray = true;  // set to true if ADOConnection.Execute() permits binding of array parameters.
-	var $sysDate = 'TODAY';
-	var $sysTimeStamp = 'CURRENT';
+	public $metaPrimaryKeySQL =
+		"select part1,part2,part3,part4,part5,part6,part7,part8 from
+		systables t,sysconstraints s,sysindexes i where t.tabname='%s'
+		and s.tabid=t.tabid and s.constrtype='P'
+		and i.idxname=s.idxname";
+
+	public $concat_operator = '||';
+
+	public $lastQuery = false;
+	public $has_insertid = true;
+
+	public $_autocommit = true;
+	public $_bindInputArray = true;  // set to true if ADOConnection.Execute() permits binding of array parameters.
+	public $sysDate = 'TODAY';
+	public $sysTimeStamp = 'CURRENT';
+	public $cursorType = IFX_SCROLL; // IFX_SCROLL or IFX_HOLD or 0
    
 	function ADODB_informix72()
 	{
@@ -55,6 +68,18 @@ class ADODB_informix72 extends ADOConnection {
         	ifx_blobinfile_mode(0); // Mode "0" means save Byte-Blobs in memory, and mode "1" means save Byte-Blobs in a file.
 		}
 	}
+	
+	function ServerInfo()
+	{
+	    if (isset($this->version)) return $this->version;
+	
+	    $arr['description'] = $this->GetOne("select DBINFO('version','full') from systables where tabid = 1");
+	    $arr['version'] = $this->GetOne("select DBINFO('version','major')||"."||DBINFO('version','minor') from systables where tabid = 1");
+	    $this->version = $arr;
+	    return $arr;
+	}
+
+
 
 	function _insertid()
 	{
@@ -114,10 +139,12 @@ class ADODB_informix72 extends ADOConnection {
 		return $this->_errorMsg;
 	}
 
-   function ErrorNo() 
-   {
-	  return ifx_error();
-   }
+	function ErrorNo()
+	{
+		preg_match("/.*SQLCODE=([^\]]*)/",ifx_error(),$parse); //!EOS
+		if (is_array($parse) && isset($parse[1])) return (int)$parse[1]; 
+		return 0;
+	}
 
    
     function &MetaColumns($table)
@@ -132,12 +159,14 @@ class ADODB_informix72 extends ADOConnection {
 			if (isset($savem)) $this->SetFetchMode($savem);
 			$ADODB_FETCH_MODE = $save;
 			if ($rs === false) return false;
+			$rspkey = $this->Execute(sprintf($this->metaPrimaryKeySQL,$table)); //Added to get primary key colno items
 
 			$retarr = array();
 			while (!$rs->EOF) { //print_r($rs->fields);
 				$fld = new ADOFieldObject();
 				$fld->name = $rs->fields[0];
 				$fld->type = $rs->fields[1];
+				$fld->primary_key=$rspkey->fields && array_search($rs->fields[4],$rspkey->fields); //Added to set primary key flag
 				$fld->max_length = $rs->fields[2];
 				if (trim($rs->fields[3]) != "AAAAAA 0") {
 	                    		$fld->has_default = 1;
@@ -177,7 +206,11 @@ class ADODB_informix72 extends ADOConnection {
 	// returns true or false
    function _connect($argHostname, $argUsername, $argPassword, $argDatabasename)
 	{
+		if (!function_exists('ifx_connect')) return null;
+		
 		$dbs = $argDatabasename . "@" . $argHostname;
+		if ($argHostname) putenv("INFORMIXSERVER=$argHostname"); 
+		putenv("INFORMIXSERVER=".trim($argHostname)); 
 		$this->_connectionID = ifx_connect($dbs,$argUsername,$argPassword);
 		if ($this->_connectionID === false) return false;
 		#if ($argDatabasename) return $this->SelectDB($argDatabasename);
@@ -187,14 +220,17 @@ class ADODB_informix72 extends ADOConnection {
 	// returns true or false
    function _pconnect($argHostname, $argUsername, $argPassword, $argDatabasename)
 	{
+		if (!function_exists('ifx_connect')) return null;
+		
 		$dbs = $argDatabasename . "@" . $argHostname;
+		putenv("INFORMIXSERVER=".trim($argHostname)); 
 		$this->_connectionID = ifx_pconnect($dbs,$argUsername,$argPassword);
 		if ($this->_connectionID === false) return false;
 		#if ($argDatabasename) return $this->SelectDB($argDatabasename);
 		return true;
 	}
 /*
-	// ifx_do does not accept bind parameters - wierd ???
+	// ifx_do does not accept bind parameters - weird ???
 	function Prepare($sql)
 	{
 		$stmt = ifx_prepare($sql);
@@ -223,10 +259,10 @@ class ADODB_informix72 extends ADOConnection {
 	  // to be able to call "move", or "movefirst" statements
 	  if (!$ADODB_COUNTRECS && preg_match("/^\s*select/is", $sql)) {
 		 if ($inputarr) {
-			$this->lastQuery = ifx_query($sql,$this->_connectionID, IFX_SCROLL, $tab);
+			$this->lastQuery = ifx_query($sql,$this->_connectionID, $this->cursorType, $tab);
 		 }
 		 else {
-			$this->lastQuery = ifx_query($sql,$this->_connectionID, IFX_SCROLL);
+			$this->lastQuery = ifx_query($sql,$this->_connectionID, $this->cursorType);
 		 }
 	  }
 	  else {
@@ -261,9 +297,9 @@ class ADODB_informix72 extends ADOConnection {
 
 class ADORecordset_informix72 extends ADORecordSet {
 
-	var $databaseType = "informix72";
-	var $canSeek = true;
-	var $_fieldprops = false;
+	public $databaseType = "informix72";
+	public $canSeek = true;
+	public $_fieldprops = false;
 
 	function ADORecordset_informix72($id,$mode=false)
 	{

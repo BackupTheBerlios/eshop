@@ -1,6 +1,6 @@
 <?php
 /*
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence.
@@ -11,23 +11,26 @@ V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights rese
   Transactions not supported yet.
 */ 
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+
 if (! defined("_ADODB_CSV_LAYER")) {
  define("_ADODB_CSV_LAYER", 1 );
 
 include_once(ADODB_DIR.'/adodb-csvlib.inc.php');
  
 class ADODB_csv extends ADOConnection {
-	var $databaseType = 'csv';
-	var $databaseProvider = 'csv';
-	var $hasInsertID = true;
-	var $hasAffectedRows = true;	
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $_affectedrows=0;
-	var $_insertid=0;
-	var $_url;
-	var $replaceQuote = "''"; // string to use to replace quotes
-	var $hasTransactions = false;
-	var $_errorNo = false;
+	public $databaseType = 'csv';
+	public $databaseProvider = 'csv';
+	public $hasInsertID = true;
+	public $hasAffectedRows = true;	
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $_affectedrows=0;
+	public $_insertid=0;
+	public $_url;
+	public $replaceQuote = "''"; // string to use to replace quotes
+	public $hasTransactions = false;
+	public $_errorNo = false;
 	
 	function ADODB_csv() 
 	{		
@@ -118,8 +121,6 @@ class ADODB_csv extends ADOConnection {
 			foreach($inputarr as $v) {
 
 				$sql .= $sqlarr[$i];
-				// from Ron Baldwin <ron.baldwin@sourceprose.com>
-				// Only quote string types	
 				if (gettype($v) == 'string')
 					$sql .= $this->qstr($v);
 				else if ($v === null)

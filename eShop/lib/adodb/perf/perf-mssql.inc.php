@@ -1,24 +1,27 @@
 <?php
 
 /* 
-V4.00 20 Oct 2003  (c) 2000-2003 John Lim (jlim@natsoft.com.my). All rights reserved.
+V4.51 29 July 2004  (c) 2000-2004 John Lim (jlim@natsoft.com.my). All rights reserved.
   Released under both BSD license and Lesser GPL library license. 
   Whenever there is any discrepancy between the two licenses, 
   the BSD license will take precedence. See License.txt. 
   Set tabs to 4 for best viewing.
   
-  Latest version is available at http://php.weblogs.com/
+  Latest version is available at http://adodb.sourceforge.net
   
   Library for basic performance monitoring and tuning 
   
 */
 
+// security - hide paths
+if (!defined('ADODB_DIR')) die();
+
 /*
 	MSSQL has moved most performance info to Performance Monitor
 */
 class perf_mssql extends adodb_perf{
-	var $sql1 = 'cast(sql1 as text)';
-	var $createTableSQL = "CREATE TABLE adodb_logsql (
+	public $sql1 = 'cast(sql1 as text)';
+	public $createTableSQL = "CREATE TABLE adodb_logsql (
 		  created datetime NOT NULL,
 		  sql0 varchar(250) NOT NULL,
 		  sql1 varchar(4000) NOT NULL,
@@ -27,7 +30,7 @@ class perf_mssql extends adodb_perf{
 		  timer decimal(16,6) NOT NULL
 		)";
 		
-	var $settings = array(
+	public $settings = array(
 	'Ratios',
 		'data cache hit ratio' => array('RATIO',
 			"select round((a.cntr_value*100.0)/b.cntr_value,2) from master.dbo.sysperfinfo a, master.dbo.sysperfinfo b where a.counter_name = 'Buffer cache hit ratio' and b.counter_name='Buffer cache hit ratio base'",
@@ -71,8 +74,21 @@ class perf_mssql extends adodb_perf{
 		$this->conn =& $conn;
 	}
 	
-	function Explain($sql)
+	function Explain($sql,$partial=false)
 	{
+		
+		$save = $this->conn->LogSQL(false);
+		if ($partial) {
+			$sqlq = $this->conn->qstr($sql.'%');
+			$arr = $this->conn->GetArray("select distinct sql1 from adodb_logsql where sql1 like $sqlq");
+			if ($arr) {
+				foreach($arr as $row) {
+					$sql = reset($row);
+					if (crc32($sql) == $partial) break;
+				}
+			}
+		}
+		
 		$s = '<p><b>Explain</b>: '.htmlspecialchars($sql).'</p>';
 		$this->conn->Execute("SET SHOWPLAN_ALL ON;");
 		$sql = str_replace('?',"''",$sql);
@@ -96,7 +112,7 @@ class perf_mssql extends adodb_perf{
 		}
 		
 		$this->conn->Execute("SET SHOWPLAN_ALL OFF;");
-		
+		$this->conn->LogSQL($save);
 		$s .= $this->Tracer($sql);
 		return $s;
 	}
