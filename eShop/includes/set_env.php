@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: set_env.php,v 1.3 2004/07/29 13:15:56 kilgore Exp $
+* $Id: set_env.php,v 1.4 2004/08/13 06:05:48 setcode Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../erreur.html"));
@@ -37,6 +37,7 @@ $template = new Smarty_eshop;
 $template->assign('title', $title);
 $template->assign('keywords', $keywords);
 $template->assign('description', $description);
+$template->assign('currency', $currency);
 
 /* creating the database connexion */
 $connexion = &ADONewConnection($db_type);
