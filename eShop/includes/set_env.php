@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: set_env.php,v 1.4 2004/08/13 06:05:48 setcode Exp $
+* $Id: set_env.php,v 1.5 2004/08/17 13:36:28 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../erreur.html"));
@@ -106,6 +106,25 @@ if(isset($_COOKIE["eshopstyle"]) && $_COOKIE["eshopstyle"]!==null)
 else
 {
 	$template->assign('css', "red");
+}
+
+
+//assign active modules
+
+$query = "SELECT * FROM ".$GLOBALS["db_prefix"]."_active_mod am WHERE am.am_status='1'";
+
+if(!$resultat = &$connexion->Execute($query))
+	echo $connexion->ErrorMsg();
+	
+$active_mod = $resultat->GetArray();
+$count = count($active_mod);
+
+if($count > 0)
+{
+	for($i = 0; $i < $count; ++$i)
+	{
+		$template->assign('mod_'.$active_mod[$i][am_name], true);
+	}
 }
 
 ?>
