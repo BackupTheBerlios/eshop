@@ -1,9 +1,11 @@
 [setcode]
-- mod_devis : print an estimate and send an email to the seller. -> new
-- mod_user : add new customer or new membership. -> at works
-- mod_order : print and validate a purchase. cheque payment is possible at the moment. -> at works
-- add a phone number for customers
-
+- Add a module manager in admin tools
+- Rebuild Estimate module to Orders 
+- Add and Modif a customer in admin tools
+- 
+	[last]
+	- add a phone number for customers -> OK
+	[/last]
 [kilgore]
 - continue eshop.berlios.de website
 - begin user help integration
