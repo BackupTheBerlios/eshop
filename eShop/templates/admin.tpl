@@ -8,13 +8,14 @@
 		<meta http-equiv="content-style-type" content="text/css" />
 		<meta content="{$description}" name="description" />
 		<meta content="{$keywords}" name="keywords" />
-		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />        
-		<link rel="stylesheet" type="text/css" href="./style/main-style.css" media="screen" title="red" />     
-		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="blue" />
-     
+		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />   
+		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/{$css}.css" />     
+		<link rel="stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />     
+		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
   </head>
 	<body id="e-shop">
 	<div align="center">
+	<div id="scroll"></div>
 	{if $is_not_logged}
 		<div id="head_menu">
 			<a href="index.php?module=mod_auth">Connexion</a> | <a href="index.php?module=mod_registration&action=register1">Inscription</a> | <a href="index.php?module=mod_cart">Panier({$articles})</a>

@@ -1,6 +1,6 @@
 <table width="600" border="0">
   <tr>
-    <td colspan="2" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Mon panier</strong></td>
+    <td colspan="2" class="framedline"><strong>Mon panier</strong></td>
   </tr>
   <tr style="font-weight:bold;">
     <td>Quantité</td>
@@ -17,4 +17,4 @@
 	</tr>
   {/section}
 </table>
-<a href="./index.php?module=mod_order&action=confirm"><div align="center"><img src="./images/order.png" border="0" /></div></a>
+<a href="./index.php?module=mod_order&action=confirm"><div id="orderbutton"></div></a>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:40:42
+<?php /* Smarty version 2.6.2, created on 2004-07-28 11:25:16
          compiled from ./pages/items.tpl */ ?>
 <div id="cat" class="chemin"> <?php echo $this->_tpl_vars['categorie']; ?>
 </div>

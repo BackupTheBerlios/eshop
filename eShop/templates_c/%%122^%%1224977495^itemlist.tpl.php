@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 20:58:25
+<?php /* Smarty version 2.6.2, created on 2004-07-28 13:50:14
          compiled from ./pages_admin/itemlist.tpl */ ?>
 <form action="index.php?module=mod_items&action=recherche" method="post" enctype="multipart/form-data">
 <table width="600" border="0">
   <tr>
-    <td colspan="2" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Liste des articles</strong></td>
+    <td colspan="2" class="framedline"><strong>Liste des articles</strong></td>
   </tr>
   <?php if ($this->_tpl_vars['error']): ?>
   <tr>

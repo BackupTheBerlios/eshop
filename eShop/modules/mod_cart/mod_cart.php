@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_cart.php,v 1.2 2004/07/10 20:32:07 kilgore Exp $
+* $Id: mod_cart.php,v 1.3 2004/07/29 13:15:59 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -153,6 +153,8 @@ switch($_REQUEST["action"])
 		{
 			$message = "Aucun élément dans votre panier !";
 			$template_include = "message";
+			
+			$template->assign("message", $message);
 		}
 		break;	
 }

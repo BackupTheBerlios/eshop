@@ -21,10 +21,10 @@
 </table>
 <div align="center">
 <b>TOP 5 des ventes</b>
-<table summary="top5ventes" id="top5" width="40%">
+<table summary="top5ventes" id="top5" width="80%">
   <tr>
-    <th align="left">{$sold_item_name0}</th>
-    <th>{$sold_item_value0}</th>
+    <th align="left" width="90%">{$sold_item_name0}</th>
+    <th width="10%">{$sold_item_value0}</th>
   </tr>
   <tr>
     <th align="left">{$sold_item_name1}</th>
@@ -46,10 +46,10 @@
 </div>
 <div align="center">
 <b>TOP 5 articles ayant le plus faible stock</b>
-<table summary="top5stock" id="top5" width="40%">
+<table summary="top5stock" id="top5" width="80%">
   <tr>
-    <th align="left">{$stock_item_name0}</th>
-    <th>{$stock_item_value0}</th>
+    <th align="left" width="90%">{$stock_item_name0}</th>
+    <th width="10%">{$stock_item_value0}</th>
   </tr>
   <tr>
     <th align="left">{$stock_item_name1}</th>

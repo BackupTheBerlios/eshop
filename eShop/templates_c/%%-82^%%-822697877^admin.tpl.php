@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:54:53
+<?php /* Smarty version 2.6.2, created on 2004-07-28 16:56:07
          compiled from ./templates/admin.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
@@ -13,13 +13,15 @@
 " name="description" />
 		<meta content="<?php echo $this->_tpl_vars['keywords']; ?>
 " name="keywords" />
-		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />        
-		<link rel="stylesheet" type="text/css" href="./style/main-style.css" media="screen" title="red" />     
-		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="blue" />
-     
+		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />   
+		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/<?php echo $this->_tpl_vars['css']; ?>
+.css" />     
+		<link rel="stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />     
+		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />
   </head>
 	<body id="e-shop">
 	<div align="center">
+	<div id="scroll"></div>
 	<?php if ($this->_tpl_vars['is_not_logged']): ?>
 		<div id="head_menu">
 			<a href="index.php?module=mod_auth">Connexion</a> | <a href="index.php?module=mod_registration&action=register1">Inscription</a> | <a href="index.php?module=mod_cart">Panier(<?php echo $this->_tpl_vars['articles']; ?>
@@ -185,7 +187,7 @@ unset($_smarty_tpl_vars);
 		  	</div>
 		</div> 
 		<div id="footer">
-			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Copyright Raphaël Emourgeon & Prêtre Thierry<?php if ($this->_tpl_vars['benchmark_activation'] == 'on'): ?>- Exec. time : <?php echo $this->_tpl_vars['benchmark'];  endif; ?></span>
+			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Auteurs : Raphaël Emourgeon & Prêtre Thierry<?php if ($this->_tpl_vars['benchmark_activation'] == 'on'): ?>- Exec. time : <?php echo $this->_tpl_vars['benchmark'];  endif; ?></span>
 		</div>
 	</div>
 	</body>

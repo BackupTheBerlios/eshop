@@ -37,4 +37,6 @@
 {/if}	
 <h1>Recherche</h1>
 {include file="./pages/search.tpl"}	
+<h1>Thème</h1>
+{include file="./pages/theme.tpl"}
 	

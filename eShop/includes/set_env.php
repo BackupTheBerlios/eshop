@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: set_env.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
+* $Id: set_env.php,v 1.3 2004/07/29 13:15:56 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../erreur.html"));
@@ -96,5 +96,15 @@ if(!$resultat = &$connexion->Execute($query))
 	echo $connexion->ErrorMsg();
 
 $template->assign('benchmark_activation', $benchmark_activation);
+
+// assign the value of the style cookie
+if(isset($_COOKIE["eshopstyle"]) && $_COOKIE["eshopstyle"]!==null)
+{
+	$template->assign('css', $_COOKIE["eshopstyle"]);
+}
+else
+{
+	$template->assign('css', "red");
+}
 
 ?>

@@ -6,15 +6,15 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.csv.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
+* $Id: class.csv.php,v 1.3 2004/07/29 13:15:59 kilgore Exp $
 **/
 
 class csv
 {
-	var $conversions;
-	var $verification;
-	var $valeurs;
-	var $numberOfSelect;
+	public $conversions;
+	public $verification;
+	public $valeurs;
+	public $numberOfSelect;
 	
 	function csv($type, $number)
 	{

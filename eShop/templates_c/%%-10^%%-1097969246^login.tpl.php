@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:41:57
+<?php /* Smarty version 2.6.2, created on 2004-07-28 11:37:38
          compiled from ./pages/login.tpl */ ?>
 	<form action="index.php?module=mod_auth&action=login" method="post">
 		<div class="login">

@@ -1,5 +1,5 @@
-<form action="index.php?module=mod_config&action=saveconfig" method="post" enctype="multipart/form-data" name="registration">
-<table border="0">
+<form action="index.php?module=mod_config&action=saveconfig" method="post" enctype="multipart/form-data" name="configuration">
+<table width="600" border="0">
   <tr>
     <td colspan="2"><div align="center">Edition de la configuration</div></td>
   </tr>
@@ -9,15 +9,15 @@
   </tr>
   {/if}
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Base de données</strong></td>
+    <td colspan="2" class="framedline"><strong>Base de données</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Type de base de données</td>
     <td class="alignleft"><input type="text" name="db_type" value="{$db_type}"/></td>
   </tr>
   <tr>
-    <td class="alignleft">Hôte</td>
-    <td class="alignleft"><input type="text" name="db_host" value="{$db_host}"/> (généralement localhost)</td>
+    <td class="alignleft">Hôte (généralement localhost)</td>
+    <td class="alignleft"><input type="text" name="db_host" value="{$db_host}"/></td>
   </tr>
   <tr>
     <td class="alignleft">Nom d'utilisateur</td>
@@ -36,18 +36,11 @@
     <td class="alignleft"><input type="text" name="db_prefix" value="{$db_prefix}"/></td>
   </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Général</strong></td>
-  </tr>  
-  <tr>
-    <td class="alignleft">Afficher le temps d'exécution du script dans le footer ?</td>
-    <td class="alignleft"><input type="checkbox" name="benchmark_activation" value="on" {if $benchmark_activation eq "on"}checked{/if}/></td>
+    <td colspan="2" class="framedline"><strong>Général</strong></td>
   </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Balises META</strong></td>
-  </tr>
-  <tr>
-    <td class="alignleft">Adresse du site</td>
-    <td class="alignleft"><input type="text" name="site_url" value="{$site_url}" size="40"/> (terminée par un /)</td>
+    <td class="alignleft">Adresse du site  (terminée par un /)</td>
+    <td class="alignleft"><input type="text" name="site_url" value="{$site_url}" size="40"/></td>
   </tr>
   <tr>
     <td class="alignleft">Titre</td>
@@ -62,7 +55,11 @@
     <td class="alignleft"><input type="text" name="keywords" value="{$keywords}" size="40"/></td>
   </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Editorial</strong></td>
+    <td class="alignleft">Afficher le temps d'exécution du script dans le pied de page ?</td>
+    <td class="alignleft"><input type="checkbox" name="benchmark_activation" value="on" {if $benchmark_activation eq "on"}checked{/if}/></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="framedline"><strong>Editorial</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Activer l'éditorial ?</td>
@@ -75,9 +72,9 @@
   <tr>
     <td class="alignleft">Contenu</td>
     <td class="alignleft"><textarea name="editorial_text" cols="37">{$editorial_text}</textarea></td>
-  </tr>   
+  </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Informations sur la société</strong></td>
+    <td colspan="2" class="framedline"><strong>Informations sur la société</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Nom</td>
@@ -104,7 +101,7 @@
     <td class="alignleft"><input type="text" name="company_copyright" value="{$company_copyright}" size="40"/></td>
   </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Facturation</strong></td>
+    <td colspan="2" class="framedline"><strong>Facturation</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Symbole monétaire (€, CHF...)</td>

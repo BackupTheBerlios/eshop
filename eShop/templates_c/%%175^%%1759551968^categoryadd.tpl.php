@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:49:54
+<?php /* Smarty version 2.6.2, created on 2004-07-28 14:00:55
          compiled from ./pages_admin/categoryadd.tpl */ ?>
 <form action="index.php?module=mod_cat&action=save" method="post" enctype="multipart/form-data" name="registration">
 <table width="600" border="0">

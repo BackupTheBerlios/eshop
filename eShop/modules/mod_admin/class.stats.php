@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.stats.php,v 1.3 2004/07/11 07:19:43 kilgore Exp $
+* $Id: class.stats.php,v 1.4 2004/07/29 13:15:59 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -15,12 +15,12 @@ class Stats
 {
 	// adding a new comment to test the CVS mail functionnality !
 	
-	var $number_articles=null;
-	var $number_categories=null;
-	var $number_user_ok=null;
-	var $number_user_validation=null;
-	var $five_most_sold_articles=null;
-	var $five_fewer_stock_articles=null;
+	public $number_articles=null;
+	public $number_categories=null;
+	public $number_user_ok=null;
+	public $number_user_validation=null;
+	public $five_most_sold_articles=null;
+	public $five_fewer_stock_articles=null;
 	
 	// Constructor
 	// Load the informations from the DB

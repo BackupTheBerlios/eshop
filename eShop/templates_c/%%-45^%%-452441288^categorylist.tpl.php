@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 20:47:27
+<?php /* Smarty version 2.6.2, created on 2004-07-28 14:00:53
          compiled from ./pages_admin/categorylist.tpl */ ?>
 <form action="index.php?module=mod_cat&action=recherche" method="post" enctype="multipart/form-data">
 <table width="600" border="0">
   <tr>
-    <td colspan="2" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Liste des catégories</strong></td>
+    <td colspan="2" class="framedline"><strong>Liste des catégories</strong></td>
   </tr>
   <?php if ($this->_tpl_vars['error']): ?>
   <tr>
@@ -14,15 +14,12 @@
   <tr>
   	<td><input type="text" name="ca_id" value="<?php echo $this->_tpl_vars['cat_id']; ?>
 "/></td>
-  	<td><input type="text" name="ca_level" value="<?php echo $this->_tpl_vars['cat_level']; ?>
-"/></td>
   	<td><input type="text" name="ca_name" value="<?php echo $this->_tpl_vars['cat_name']; ?>
 "/></td>
   	<td><input class="submit" type="submit" value="Rechercher" /></td>
   </tr>
   <tr style="font-weight:bold;">
     <td>ID</td>
-    <td>Level</td>
     <td>Nom</td>
     <td>Edition/Suppression</td>
   </tr> 
@@ -52,8 +49,6 @@ $this->_sections['categories']['last']       = ($this->_sections['categories']['
 ?>
   <tr  <?php if ($this->_sections['categories']['index']%2 == 0): ?>class="tab_ligne"<?php endif; ?>>
   	<td><?php echo $this->_tpl_vars['cat'][$this->_sections['categories']['index']][0]; ?>
-</td>
-  	<td><?php echo $this->_tpl_vars['cat'][$this->_sections['categories']['index']][2]; ?>
 </td>
   	<td><?php echo $this->_tpl_vars['cat'][$this->_sections['categories']['index']][1]; ?>
 </td>

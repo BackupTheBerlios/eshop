@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:48:40
+<?php /* Smarty version 2.6.2, created on 2004-07-28 13:51:04
          compiled from ./pages_admin/accueil.tpl */ ?>
 <div align="center">Bienvenue dans la zone d'administration</div>
 <br />
@@ -27,11 +27,11 @@
 </table>
 <div align="center">
 <b>TOP 5 des ventes</b>
-<table summary="top5ventes" id="top5" width="40%">
+<table summary="top5ventes" id="top5" width="80%">
   <tr>
-    <th align="left"><?php echo $this->_tpl_vars['sold_item_name0']; ?>
+    <th align="left" width="90%"><?php echo $this->_tpl_vars['sold_item_name0']; ?>
 </th>
-    <th><?php echo $this->_tpl_vars['sold_item_value0']; ?>
+    <th width="10%"><?php echo $this->_tpl_vars['sold_item_value0']; ?>
 </th>
   </tr>
   <tr>
@@ -62,11 +62,11 @@
 </div>
 <div align="center">
 <b>TOP 5 articles ayant le plus faible stock</b>
-<table summary="top5stock" id="top5" width="40%">
+<table summary="top5stock" id="top5" width="80%">
   <tr>
-    <th align="left"><?php echo $this->_tpl_vars['stock_item_name0']; ?>
+    <th align="left" width="90%"><?php echo $this->_tpl_vars['stock_item_name0']; ?>
 </th>
-    <th><?php echo $this->_tpl_vars['stock_item_value0']; ?>
+    <th width="10%"><?php echo $this->_tpl_vars['stock_item_value0']; ?>
 </th>
   </tr>
   <tr>

@@ -9,7 +9,7 @@
   </tr>
   {/if}
    <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Informations utilisateur</strong></td>
+    <td colspan="2" class="framedline"><strong>Informations utilisateur</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Nom d'utilisateur</td>
@@ -28,7 +28,7 @@
     <td class="alignleft"><input type="text" name="us_email" value="{$us_email}"/></td>
   </tr>
    <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Informations personnelles</strong></td>
+    <td colspan="2" class="framedline"><strong>Informations personnelles</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Nom</td>
@@ -59,7 +59,7 @@
     <td class="alignleft">{$us_country}</td>
   </tr>
    <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Autres options</strong></td>
+    <td colspan="2" class="framedline"><strong>Autres options</strong></td>
   </tr>
   <tr>
     <td class="alignleft">Newsletter</td>

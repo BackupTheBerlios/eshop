@@ -1,4 +1,50 @@
 <?php
+
+defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
+
+function numberOfItemsInCat($catid)
+{
+	$resultat = 0;
+		
+	// number of items in the cat
+	$query = "SELECT COUNT(it_id) FROM ".$GLOBALS["db_prefix"]."_items WHERE it_cat_FK='".$catid."'";
+	
+	$recordSet = &$GLOBALS["connexion"]->Execute($query);
+
+	if (!$recordSet) 
+		echo $GLOBALS["connexion"]->ErrorMsg();
+	else
+		$resultat += $recordSet->fields[0];
+	
+	// list all the subcat
+	$query = "SELECT ca_id FROM ".$GLOBALS["db_prefix"]."_cat WHERE ca_cat_FK='".$catid."'";
+
+	$recordSet = &$GLOBALS["connexion"]->Execute($query);
+
+	if (!$recordSet) 
+		echo $GLOBALS["connexion"]->ErrorMsg();
+	else
+	{
+		// if there are subcat
+		if($recordSet->RecordCount() > 0)
+		{			
+			// call the same method for all the subcat and save the result
+			while (!$recordSet->EOF)
+			{
+				$resultat += numberOfItemsInCat($recordSet->fields[0]);
+							
+				$recordSet->MoveNext();
+			}
+		}
+		else // return the number of items in the cat
+		{
+			return $resultat;
+		}	
+	}
+	
+	return $resultat;
+}
+
 //défini le nombre de colonne du listage des sous-groupes
 
 $nbr_colonne = 4;
@@ -10,7 +56,6 @@ if(isset($_REQUEST["num_page"]))
 	$num_page = $_REQUEST["num_page"];
 else
 	$num_page = 1;
-defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
 
 if(isset($_REQUEST["cat"]))
 {
@@ -29,16 +74,12 @@ if(isset($_REQUEST["cat"]))
 		
 		while (!$recordSet->EOF)
 		{		
-			$query_artOfCat = "SELECT * FROM ".$db_prefix."_items WHERE it_cat_FK=".$recordSet->fields["ca_id"]." AND it_activated='1'";
-			$recordSet_artOfCat = &$connexion->Execute($query_artOfCat);
-				
-				
 			// display sub-categories with number of items
 			
 			if($i%$nbr_colonne==0)
 				$contenu .= '<tr>';
 			$contenu .= '<td width="'.(100 / $nbr_colonne).'%">';
-			$contenu .= '<b>'.$recordSet_artOfCat->RecordCount().'</b> <a href="'.$_SERVER["PHP_SELF"].'?module=mod_main&cat='.$recordSet->fields[0].'">';
+			$contenu .= '<b>'.numberOfItemsInCat($recordSet->fields["ca_id"]).'</b> <a href="'.$_SERVER["PHP_SELF"].'?module=mod_main&cat='.$recordSet->fields[0].'">';
 			$contenu .= '<accronym title="'.$recordSet->fields["ca_description"].'">'.$recordSet->fields[1].'</accronym></a>';
 			$contenu .= '</td>';
 			if(($i%$nbr_colonne)==($nbr_colonne-1))
@@ -219,13 +260,13 @@ if(isset($_REQUEST["cat"]))
 					if($recordSet_OneArt->fields["it_quantity"] > 0)
 					{
 						$liste .= '<td align=center>';
-						$liste .= '<a href="index.php?module=mod_cart&action=add&cat='.$recordSet_OneArt->fields["it_cat_FK"].'&item='.$recordSet_OneArt->fields["it_id"].'"><img border="0" src="./images/cart.png"></a>';
+						$liste .= '<a href="index.php?module=mod_cart&action=add&cat='.$recordSet_OneArt->fields["it_cat_FK"].'&item='.$recordSet_OneArt->fields["it_id"].'"><div id="addbutton"></div></a>';
 						$liste .= '</td>';
 					}
 					$liste .= '<td>';
 					if(isset($_SESSION["level"]))
 						if($_SESSION["level"] > 5)
-							$liste .= '<a href="./index.php?module=mod_items&action=modif&id='.$recordSet_OneArt->fields["it_id"].'"><img src="./images/edit.png" border="0" /></a>';
+							$liste .= '<a href="./index.php?module=mod_items&action=modif&id='.$recordSet_OneArt->fields["it_id"].'"><div id="editbutton"></div></a>';
 					$liste .= '</td>';
 					$liste .= '</tr>';
 					$liste .= '</table>';

@@ -6,7 +6,7 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: mod_auth.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
+* $Id: mod_auth.php,v 1.3 2004/07/29 13:15:54 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
@@ -72,7 +72,7 @@ switch($_REQUEST["action"])
 				print $connexion->ErrorMsg();
 
 			// redirecting visitor
-			header("Location: index.php");
+			header("Location:".$_SERVER["HTTP_REFERER"]);
 		} 
 	}
 	
@@ -90,22 +90,23 @@ switch($_REQUEST["action"])
 		break;
 
 	case 'logout':
-	// shoot all the var in the session
-	$session->unregister_all();
-	
-	// redirect the visitor
-	header("Location: index.php");
+		// shoot all the var in the session
+		$session->unregister_all();
+		
+		// redirect the visitor
+		header("Location:".$_SERVER["HTTP_REFERER"]);
 		break;
 
 
 	default:
-	/* printing the login form */
-
-	// displaying the login form
-	$template->assign('template', 'login');
+		/* printing the login form */
 	
-	$template->assign('is_not_logged', $is_not_logged);
-	$template->assign('login_error', false);
+		// displaying the login form
+		$template->assign('template', 'login');
+		
+		$template->assign('is_not_logged', $is_not_logged);
+		$template->assign('login_error', false);
+		break;
 }
 
 /*

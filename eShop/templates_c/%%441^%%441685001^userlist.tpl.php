@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 20:57:39
+<?php /* Smarty version 2.6.2, created on 2004-07-28 14:00:57
          compiled from ./pages_admin/userlist.tpl */ ?>
 <form action="index.php?module=mod_user&action=recherche" method="post" enctype="multipart/form-data">
 <table width="600" border="0">

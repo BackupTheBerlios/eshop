@@ -9,11 +9,13 @@
 		<meta content="{$description}" name="description" />
 		<meta content="{$keywords}" name="keywords" />
 		<meta content="Thierry Prêtre / Raphaël Emourgeon" name="author" />           
-		<link rel="stylesheet" type="text/css" href="./style/main-style.css" media="screen" title="rouge" />
-		<link rel="stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />     
+		<link rel="stylesheet" type="text/css" media="screen" title="Style défini par l'utilisateur" href="./style/{$css}.css" />
+		<link rel="alternate stylesheet" type="text/css" href="./style/red.css" media="screen" title="rouge" />
+		<link rel="alternate stylesheet" type="text/css" href="./style/blue.css" media="screen" title="bleu" />     
   </head>
 	<body id="e-shop">
 	<div align="center">
+	<div id="scroll"></div>
 	{if $is_not_logged}
 		<div id="head_menu">
 			<a href="index.php">Accueil</a> | <a href="index.php?module=mod_auth">Connexion</a> | <a href="index.php?module=mod_registration&action=register1">Inscription</a> | <a href="index.php?module=mod_cart">Panier ({$articles})</a>
@@ -39,7 +41,6 @@
 		  			{include file="./pages/menu.tpl"}
 		  	</div>
 		  	<div id="center">
-	  		
 		  		{* no switch in smarty so need to do loads of switch for the different main part *}
 		  		{if $template eq "error"}
 		  			{include file="./pages/error.tpl"}
@@ -48,8 +49,8 @@
 		  			{include file="./pages/message.tpl"}
 		  		{/if}
 		  		{if $template == "main"}
-		  			{include file="./pages/main.tpl"}
-		  		{/if}
+	  				{include file="./pages/main.tpl"}
+	  			{/if}
 		  		{if $template == "login"}
 		  			{include file="./pages/login.tpl"}
 		  		{/if}
@@ -72,6 +73,9 @@
 		  			{include file="./pages/resultsearch.tpl"}
 		  		{/if}
 		  	</div>
+		  	{if $template == "main" && $numberOfItems > 0}
+	  			{include file="./pages/itemsfrontpage.tpl"}
+	  		{/if}
 		</div> 
 		<div id="footer">
 			<span class="mini"><a href="http://www.linux-france.org/article/these/gpl.html">Licence GPL</a> - Auteurs : Raphaël Emourgeon & Prêtre Thierry{if $benchmark_activation eq "on"}- Exec. time : {$benchmark}{/if}</span>

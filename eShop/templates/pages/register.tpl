@@ -1,5 +1,5 @@
 <form action="index.php?module=mod_registration&action=register2" method="post" enctype="multipart/form-data" name="registration">
-<table width="500" border="0">
+<table width="600" border="0">
   <tr>
     <td colspan="2"><div align="center">Inscription</div></td>
   </tr>
@@ -9,7 +9,7 @@
   </tr>
   {/if}
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Informations personnelles </strong></td>
+    <td colspan="2" class="framedline"><strong>Informations personnelles </strong></td>
   </tr>
   <tr>
     <td width="248" class="alignleft">Nom</td>
@@ -44,7 +44,7 @@
     <td class="alignleft">{$select_pays}</td>
   </tr>
   <tr>
-    <td colspan="2" class="alignleft" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Informations du compte </strong></td>
+    <td colspan="2" class="framedline"><strong>Informations du compte </strong></td>
   </tr>
   <tr>
     <td class="alignleft">Nom d'utilisateur </td>

@@ -3,12 +3,12 @@
  *
  *	project		: E-shop
  *	created		: 8.12.2003
- *	author		: Thierry Prêtre
+ *	author		: Thierry Prêtre & Raphaël Emourgeon
  * ----------------------------------------------------
  */
  
 /* ----------------------------------------------------
- * globals selectors
+ * GLOBALS SELECTOR
  * ---------------------------------------------------*/
 
 body {
@@ -17,7 +17,6 @@ body {
 	color: #000;
 	background-color: #fff;
 	padding: 0;
-	margin: 0;
 	text-align: left;
 	height:100%;
 }
@@ -36,7 +35,7 @@ li {
 }
  
 /* ----------------------------------------------------
- * divs defintions
+ * DIV DEFINITION
  * ---------------------------------------------------*/
  
 #container {
@@ -45,24 +44,29 @@ li {
 	padding: 3px;
 	border-right: 2px solid #000;
 	border-left: 2px solid #000;
-	color : #000;
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
-	height:inherit;
-	overflow:hidden;
-	height:auto;
-	clear:both;
+	color : #000;
+}
+
+/* hack to force vertical scrollbar */
+
+#scroll { 
+	position:absolute; 
+	top:0; 
+	bottom:-0.1px; 
+	width:1em; 
+	z-index:-1; 
 }
 
 #title {
-
 	border-right: 2px solid #000;
 	border-left: 2px solid #000;
 	border-bottom: 2px solid #000;
 	width: 780px;
 	padding: 3px;
 	height:100px;
-	background-image: url("../images/shop-blue.jpg");
+	background-image: url("../images/blue/shop.jpg");
 }
 
 #head_menu {
@@ -75,6 +79,7 @@ li {
 	color: #88e;
 	background-color: #000;	
 }
+
 #log_menu {
 	font-weight: bold;
 	border-right: 2px solid #000;
@@ -93,6 +98,20 @@ li {
 	text-align: right;
 }
 
+#menu {
+	float:left;
+	width: 17em;
+	border: solid #237 1px;
+}
+
+#center {
+	margin-left: 17.5em;
+	border: solid #237 1px;
+}
+
+#frontpageitems{
+	margin-left: 17.5em;
+}
 
 #cont_menu a {
 	text-align: left;
@@ -101,21 +120,6 @@ li {
 	margin: 0 auto;
 	color: #ccc;
 	background-color: #000;
-}
-
-#menu {
-	float:left;
-	margin: 0px auto;
-	width: 17em;
-	background-color:white;
-	border: solid #237 1px;
-
-}
-
-#center {
-	margin-left:17.5em;
-	border: solid #237 1px;
-	height:auto;
 }
 
 #validator {
@@ -152,7 +156,6 @@ li {
 
 #editorial {
 	padding:4px;
-	min-height:10px;
 }
 
 #homepage {
@@ -160,7 +163,7 @@ li {
 }
 
 /* ----------------------------------------------------
- * classes/elements defintions
+ * ELEMENTS DEFINITIONS
  * ---------------------------------------------------*/
 
 #footer a {
@@ -229,9 +232,9 @@ li {
 	color: #fff;	
 }
 
-/*=========================================================
-FORMULAIRES
-=========================================================*/
+/* ----------------------------------------------------
+ * FORMS
+ * ---------------------------------------------------*/
 input, textarea, option, select {
 	background : #aaf;
 	color : #000;
@@ -266,9 +269,9 @@ div.login {
 	border : 1px solid #237; 
 }
 
-/*=========================================================
-TABLEAU STATS PAGE ACCUEIL ADMIN
-=========================================================*/
+/* ----------------------------------------------------
+ * ADMIN MAIN PAGE
+ * ---------------------------------------------------*/
 
 #stats th {
 	border: solid #237 1px;
@@ -283,7 +286,7 @@ TABLEAU STATS PAGE ACCUEIL ADMIN
 }
 
 /* ----------------------------------------------------
- * Install style 
+ * INSTALLER STYLE
  * ---------------------------------------------------*/
 
 div.inst_header
@@ -386,15 +389,23 @@ select#install {
 	border : 1px inset #000;
 }
 /* ----------------------------------------------------
- * Affichage style
+ * ARRAY DISPLAY
  * ---------------------------------------------------*/
 
 tr.tab_ligne 
 {
 	background-color:#ded;
 }
+
+
+td.framedline
+{
+	border-top:thin solid #237; 
+	border-bottom:thin solid #237;
+}
+
 /* ----------------------------------------------------
- * Affichage articles
+ * ARTICLE DISPLAY
  * ---------------------------------------------------*/
 
 div.chemin
@@ -464,7 +475,7 @@ div.pages a:active
 }
 
 /* ----------------------------------------------------
- * Affichage edito
+ * EDITORIAL
  * ---------------------------------------------------*/
 
 #center h1.editorial
@@ -483,30 +494,30 @@ div.pages a:active
 	font-weight:normal;
 }
 
-div.attention
-{
-	color: #889;
-	padding: 10px;
-}
 /* ----------------------------------------------------
  * MAIN ARTICLES
  * ---------------------------------------------------*/
 
-div.frontpage{
-	position:relative;
-	display : block;
-	float : left;
-	padding : 5px;
-	margin-top : 10px;
-	margin-left : 6px;
-	background-color: #cce;
+div.frontpage
+{
+	width:180px;
+	height:60px;
+	text-align:left;
+	
 	border-width : 1px 1px 1px 1px;
 	border-style : solid;
 	border-color : #999;
-	border-bottom-color : #999;
-	width:180px;
-	text-align:left;
-	height: 60px;
+	
+	background-color: #bbe;
+
+	position:relative;
+	display : block;
+	float : left;
+	
+	margin-top : 10px;
+	margin-left : 6px;
+	
+	padding:2px;
 }
 
 div.frontpage h1
@@ -522,4 +533,26 @@ div.frontpage h2
 	font-size:10px;
 	display : block;
 	text-align:right;
+}
+
+/* ----------------------------------------------------
+ * BUTTONS
+ * ---------------------------------------------------*/
+
+#addbutton{
+	background-image: url("../images/blue/cart.png");
+	width: 110px;
+	height: 24px;
+}
+
+#editbutton{
+	background-image: url("../images/blue/edit.png");
+	width: 110px;
+	height: 24px;
+}
+
+#orderbutton{
+	background-image: url("../images/blue/order.png");
+	width: 110px;
+	height: 24px;
 }

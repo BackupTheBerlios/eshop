@@ -10,7 +10,7 @@
 
 class SESSION
 {
-	var $id;
+	public $id;
 	
 	
 	/**

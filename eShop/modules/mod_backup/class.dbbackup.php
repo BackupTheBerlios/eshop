@@ -6,16 +6,16 @@
 * @ Authors : 2004 T. Prêtre & R. Emourgeon
 * @ eShop is Free Software
 * @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html
-* $Id: class.dbbackup.php,v 1.2 2004/07/10 20:32:06 kilgore Exp $
+* $Id: class.dbbackup.php,v 1.3 2004/07/29 13:15:55 kilgore Exp $
 **/
 
 defined( '_DIRECT_ACCESS' ) or die(header("Location: ../../erreur.html"));
 
 class DbBackup
 {
-	var $conn = null;
-	var $dbname = null;
-	var $path = null;
+	public $conn = null;
+	public $dbname = null;
+	public $path = null;
 	
 	function DbBackup()
 	{

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-08 21:48:43
+<?php /* Smarty version 2.6.2, created on 2004-07-28 14:52:08
          compiled from ./pages/menu.tpl */ ?>
 <?php if (! $this->_tpl_vars['is_not_logged']): ?>
 <h1>Mon E-Shop</h1>
@@ -69,4 +69,10 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "./pages/search.tpl", 
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>	
+<h1>Thème</h1>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./pages/theme.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
 	

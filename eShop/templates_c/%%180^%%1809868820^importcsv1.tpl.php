@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.2, created on 2004-07-06 19:48:48
+<?php /* Smarty version 2.6.2, created on 2004-07-28 13:50:18
          compiled from ./pages_admin/importcsv1.tpl */ ?>
 <div align="center">
 	Quel est le nombre d'éléments par ligne dans le fichier CSV ?

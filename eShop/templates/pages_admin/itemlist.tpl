@@ -1,7 +1,7 @@
 <form action="index.php?module=mod_items&action=recherche" method="post" enctype="multipart/form-data">
 <table width="600" border="0">
   <tr>
-    <td colspan="2" style="border-top:thin solid #723; border-bottom:thin solid #723;"><strong>Liste des articles</strong></td>
+    <td colspan="2" class="framedline"><strong>Liste des articles</strong></td>
   </tr>
   {if $error}
   <tr>
